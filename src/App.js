@@ -9,7 +9,8 @@ import {collection, getDocs,addDoc, doc, setDoc,deleteDoc  } from 'firebase/fire
  */
 import Home from './Pages/Home';
 import Signup from './Pages/Signup'
-import Login from './Components/Login/Login';
+import Login from './Pages/Login';
+import Create from './Pages/Create'
 
 function App() {
 
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path='/Login'>
             <Login/>
+          </Route>
+          <Route path='/Sell'>
+            <Create/>
           </Route>
         </Routes>
       </Router>

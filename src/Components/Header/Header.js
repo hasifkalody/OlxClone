@@ -26,6 +26,9 @@ function Header() {
     dropdownstatus(!dropdownClicked)
     
   }
+  const toSell=()=>{
+    nav('/Sell')
+  }
   onAuthStateChanged(auth,async (user) => {
     if (user) {
       const q = query(collection(db, "users"), where("uid", "==", user.uid));
@@ -87,7 +90,7 @@ function Header() {
             
     
 
-        <div className="sellMenu">
+        <div onClick={toSell} className="sellMenu">
           <SellButton></SellButton>
           <div className="sellMenuContent">
             <SellButtonPlus></SellButtonPlus>
