@@ -1,38 +1,62 @@
-import React from 'react';
-
+import React, {useState} from 'react';
 import Logo from '../../olx-logo.png';
 import './Login.css';
+import {logInWithEmailAndPassword,signInWithGoogle} from '../../Firebase/Auth'
+import {useNavigate} from 'react-router-dom'
 
 function Login() {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [LoginErr, LoginErrstatus] = useState();
+  const nav= useNavigate()
+  const login=()=>{
+    const callback=(loginResponse)=>{
+      if(loginResponse.loginError)LoginErrstatus(loginResponse.loginError)
+      else nav(loginResponse)
+      console.log(loginResponse)
+    }
+    
+    logInWithEmailAndPassword(email,password,callback);
+  }
+  const loginWithGoogle=()=>{
+    signInWithGoogle()
+  }
+  const PreventFormSubmission=(event)=>{
+    event.preventDefault()
+  }
+  const NavigatToSignUp=()=>{
+   nav('/Signup')
+  }
+  
   return (
     <div>
       <div className="loginParentDiv">
         <img width="200px" height="200px" src={Logo}></img>
-        <form>
+        <form on onSubmit={PreventFormSubmission}>
           <label htmlFor="fname">Email</label>
           <br />
-          <input
+          <input onChange={(e) => setEmail(e.target.value)}
             className="input"
             type="email"
             id="fname"
             name="email"
-            defaultValue="John"
           />
           <br />
           <label htmlFor="lname">Password</label>
           <br />
-          <input
-            className="input"
+          <input onChange={(e) => setPassword(e.target.value)}
+            className={LoginErr?"loginError":"input" }
             type="password"
             id="lname"
             name="password"
-            defaultValue="Doe"
           />
           <br />
+          <p style={{color:"red"}}>{LoginErr?LoginErr:""}</p>
           <br />
-          <button>Login</button>
+          <button onClick={login}>Login</button>
+          <button onClick={loginWithGoogle}>Login With Google</button>
         </form>
-        <a>Signup</a>
+        <a onClick={NavigatToSignUp} >Signup</a>
       </div>
     </div>
   );

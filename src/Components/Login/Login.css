@@ -35,4 +35,10 @@
     justify-content: center;
     cursor: pointer;
   }
-  
+  .loginError{
+    border: 1px solid red;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    outline-color: transparent;
+  }
