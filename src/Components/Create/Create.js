@@ -1,11 +1,15 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState,  } from 'react';
 import './Create.css';
-import Header from '../Header/Header';
 
-const Create = () => {
+const Create = () => {;
+  const [Name, setName] = useState()
+  const [Category, setCategory] = useState();
+  const [Price, setPrice] = useState();
+  const [image, setImage] = useState();
+  const [imageURL, setImageURL] = useState();
   return (
     <Fragment>
-      <Header />
+      
       <card>
         <div className="centerDiv">
           <form>
@@ -16,7 +20,7 @@ const Create = () => {
               type="text"
               id="fname"
               name="Name"
-              defaultValue="John"
+              onChange={(e)=>{setName(e.target.value)}}
             />
             <br />
             <label htmlFor="fname">Category</label>
@@ -26,19 +30,26 @@ const Create = () => {
               type="text"
               id="fname"
               name="category"
-              defaultValue="John"
+              onChange={(e)=>{setCategory(e.target.value)}}
             />
             <br />
             <label htmlFor="fname">Price</label>
             <br />
-            <input className="input" type="number" id="fname" name="Price" />
+            <input className="input" type="number" id="fname" name="Price"
+            onChange={(e)=>{setPrice(e.target.value)}} />
             <br />
           </form>
           <br />
-          <img alt="Posts" width="200px" height="200px" src=""></img>
+          <img alt="Posts" width="200px" height="200px" src={imageURL}
+          ></img>
           <form>
             <br />
-            <input type="file" />
+            <input type="file"  onChange={(e)=>{
+            setImage(e.target.files[0]);
+            
+            setImageURL(URL.createObjectURL(image))
+            console.log(imageURL)}}
+            />
             <br />
             <button className="uploadBtn">upload and Submit</button>
           </form>
