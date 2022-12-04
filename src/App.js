@@ -23,7 +23,7 @@ export const Contextuser=createContext()
 
 function App() {
  
-  const [LogedUser, setLogedUser] = useState()
+  const [LogedUser, setLogedUser] = useState({})
   useEffect(() => {
     onAuthStateChanged(auth,async (user) => {
       if (user) {
@@ -31,11 +31,11 @@ function App() {
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
           setLogedUser(doc.data());
-          console.log(doc.data())
         });
         
         }
         else{
+          setLogedUser({})
           console.log('User is signed out++++')}
       })
 
