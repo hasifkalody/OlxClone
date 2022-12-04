@@ -1,10 +1,24 @@
-import React from 'react';
-import {Link} from 'react-router-dom'
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import React, { useEffect } from 'react';
+import {useNavigate} from 'react-router-dom'
 import Heart from '../../assets/Heart';
+import { db } from '../../Firebase/Auth';
 import './Post.css';
 
 function Posts() {
-
+  const nav=useNavigate()
+  const navToViewPost=()=>{
+    nav('/ViewPosts')
+  }
+ useEffect(() => {
+  const getSellPostings= async()=>{
+    const q = query(collection(db, "users"), where("uid", "==", ));
+    const querySnapshot = await getDocs(q);
+    
+  }
+ 
+  getSellPostings()
+ }, [])
   return (
     <div className="postParentDiv">
       <div className="moreView">
@@ -13,9 +27,8 @@ function Posts() {
           <span>View more</span>
         </div>
         <div className="cards">
-         <Link to="/ViewPosts">
-         <div
-            className="card"
+         
+         <div className="card" onClick={navToViewPost}
           >
             <div className="favorite">
               <Heart></Heart>
@@ -32,7 +45,7 @@ function Posts() {
               <span>Tue May 04 2021</span>
             </div>
           </div>
-         </Link>
+         
         </div>
       </div>
       <div className="recommendations">

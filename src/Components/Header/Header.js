@@ -12,12 +12,13 @@ import { useNavigate } from 'react-router-dom';
 import {logout} from "../../Firebase/Auth";
 import {Contextuser} from '../../App'
 function Header() {
-  const LogedIn=useContext(Contextuser)
+  const LogedUser=useContext(Contextuser)
+  const LogedUserName=LogedUser.name
   const [dropdownClicked, dropdownstatus] = useState(false)
   const nav = useNavigate()
   const toggleClass=()=>{dropdownstatus(!dropdownClicked)}
   const toLogin =()=>{
-    LogedIn?toggleClass():nav('/login')
+    LogedUserName?toggleClass():nav('/login')
     
   }
   const toLogOut =()=>{
@@ -26,13 +27,13 @@ function Header() {
     
   }
   const toSell=()=>{
-    LogedIn?nav('/sell'):nav('/login')
+    LogedUserName?nav('/sell'):nav('/login')
   }
  
     
 
   useEffect(() => {
-   
+   console.log(LogedUser)
   },[] )
 
 
@@ -65,7 +66,7 @@ function Header() {
         </div>
        <div>
             <div className="loginPage">
-            <span onClick={toLogin}>{LogedIn?`${LogedIn} >`:"Login"}</span>
+            <span onClick={toLogin}>{LogedUserName?`${LogedUserName} >`:"Login"}</span>
             <hr />
             </div>
          

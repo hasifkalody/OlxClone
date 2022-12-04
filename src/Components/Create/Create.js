@@ -10,11 +10,10 @@ const Create = () => {
   const [Category, setCategory] = useState();
   const [Price, setPrice] = useState();
   const [image, setImage] = useState();
+  const [uid, setuid] = useState();
   const Handleupload=async()=>{
-    await upload(image, Name, Category, Price);
+    await upload(image, Name, Category, Price,uid);
     nav('/')
-  
-  
   }
   return (
     <Fragment>

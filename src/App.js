@@ -23,26 +23,26 @@ export const Contextuser=createContext()
 
 function App() {
  
-  const [LogedUserName, setLogedUserName] = useState()
+  const [LogedUser, setLogedUser] = useState()
   useEffect(() => {
     onAuthStateChanged(auth,async (user) => {
       if (user) {
         const q = query(collection(db, "users"), where("uid", "==", user.uid));
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
-          setLogedUserName(doc.data().name);
+          setLogedUser(doc.data());
+          console.log(doc.data())
         });
         
         }
         else{
-          setLogedUserName(false);
           console.log('User is signed out++++')}
       })
 
   }, [])
   return (
     <div>
-      <Contextuser.Provider value={LogedUserName}>
+      <Contextuser.Provider value={LogedUser}>
         <Router>
           <Routes>
             <Route path='/'>
