@@ -1,6 +1,8 @@
 import { initializeApp } from "firebase/app";
-import {GoogleAuthProvider,getAuth,signInWithPopup,signInWithEmailAndPassword,createUserWithEmailAndPassword,sendPasswordResetEmail,signOut,onAuthStateChanged} from 'firebase/auth';
-import {getFirestore,query, getDocs, collection,where,addDoc} from "firebase/firestore"
+import {GoogleAuthProvider,getAuth,signInWithPopup,signInWithEmailAndPassword,createUserWithEmailAndPassword,sendPasswordResetEmail,signOut} from 'firebase/auth';
+import {getFirestore,query, getDocs, collection,where,addDoc} from "firebase/firestore";
+import {getStorage, ref, uploadBytes, getDownloadURL,} from 'firebase/storage';
+
 const firebaseConfig = {
     apiKey: "AIzaSyCg026Knb05SB9O5AlbspWFDq8128ZwdsM",
     authDomain: "forlearningpurpose.firebaseapp.com",
@@ -13,6 +15,7 @@ const firebaseConfig = {
   const app =initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
+  const storage=getStorage(app)
 
   const googleProvider = new GoogleAuthProvider();
 const signInWithGoogle = async () => {
@@ -75,15 +78,23 @@ const logout = () => {
   signOut(auth);
 };
 
-// onAuthStateChanged(auth, (user) => {
-//   if (user) {
+// ======================store=================================
+const upload = (image, Name, Category, Price) => {
 
-//     const uid = user.uid;
-//     console.log('User is signed in')
-   
-//   } else {
-//     console.log('User is signed out')
-    
-//   }
-// });
-export {auth,db,signInWithGoogle,logInWithEmailAndPassword,registerWithEmailAndPassword,sendPasswordReset,logout}
+  const storageRef = ref(storage, `sellPostings/${image.name}`);
+  uploadBytes(storageRef, image).then((snapshot) => {
+    getDownloadURL(ref(storage, `sellPostings/${image.name}`))
+    .then((url) => {
+      const date=new Date()
+      console.log(date)
+      const SellingItemData = { Name, Category, Price, imageURL: url,date }
+      addDoc(collection(db, "SellPostings"), SellingItemData);
+    })
+    .catch((error) => {
+      alert("Error While Uploading,Make Sure upladed file is of jpeg format")
+    });
+  });
+}
+
+
+export {auth,db,storage,signInWithGoogle,logInWithEmailAndPassword,registerWithEmailAndPassword,sendPasswordReset,logout,upload}

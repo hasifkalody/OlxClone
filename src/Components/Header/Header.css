@@ -165,3 +165,11 @@
 .hideDropDown{
   display: none;
 }
+.logOutButon{
+  text-decoration: none;
+}
+.logOutButon hr {
+  margin: 0;
+  background-color: black;
+  height: 2px;
+}

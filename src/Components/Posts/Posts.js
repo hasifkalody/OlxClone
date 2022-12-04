@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom'
 import Heart from '../../assets/Heart';
 import './Post.css';
 
@@ -13,7 +13,8 @@ function Posts() {
           <span>View more</span>
         </div>
         <div className="cards">
-          <div
+         <Link to="/ViewPosts">
+         <div
             className="card"
           >
             <div className="favorite">
@@ -31,6 +32,7 @@ function Posts() {
               <span>Tue May 04 2021</span>
             </div>
           </div>
+         </Link>
         </div>
       </div>
       <div className="recommendations">

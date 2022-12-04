@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react';
+import React,{useContext, useEffect, useState} from 'react';
 
 import './Header.css';
 import OlxLogo from '../../assets/OlxLogo';
@@ -9,11 +9,10 @@ import SellButtonPlus from '../../assets/SellButtonPlus';
 import { useNavigate } from 'react-router-dom';
 
 // import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, db, logout} from "../../Firebase/Auth";
-import { query, collection, getDocs, where } from "firebase/firestore";
-import{onAuthStateChanged} from 'firebase/auth';
+import {logout} from "../../Firebase/Auth";
+import {Contextuser} from '../../App'
 function Header() {
-  const [LogedIn, setLogedIn] = useState()
+  const LogedIn=useContext(Contextuser)
   const [dropdownClicked, dropdownstatus] = useState(false)
   const nav = useNavigate()
   const toggleClass=()=>{dropdownstatus(!dropdownClicked)}
@@ -27,21 +26,9 @@ function Header() {
     
   }
   const toSell=()=>{
-    nav('/Sell')
+    LogedIn?nav('/sell'):nav('/login')
   }
-  onAuthStateChanged(auth,async (user) => {
-    if (user) {
-      const q = query(collection(db, "users"), where("uid", "==", user.uid));
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => {
-        setLogedIn(doc.data().name);
-      });
-      
-      }
-      else{
-        setLogedIn(false);
-        console.log('User is signed out++++')}
-    })
+ 
     
 
   useEffect(() => {
@@ -82,7 +69,7 @@ function Header() {
             <hr />
             </div>
          
-            <div className={dropdownClicked?"loginPage":"hideDropDown"}>
+            <div className={dropdownClicked?"logOutButon":"hideDropDown"}>
             <span onClick={toLogOut}>LogOut</span>
             <hr />
             </div>
