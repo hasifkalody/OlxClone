@@ -1,24 +1,36 @@
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {useNavigate} from 'react-router-dom'
 import Heart from '../../assets/Heart';
 import { db } from '../../Firebase/Auth';
 import './Post.css';
 
 function Posts() {
+  const [AllSellPostings, setAllSellPostings] = useState([])
   const nav=useNavigate()
   const navToViewPost=()=>{
     nav('/ViewPosts')
   }
  useEffect(() => {
+  
   const getSellPostings= async()=>{
-    const q = query(collection(db, "users"), where("uid", "==", ));
-    const querySnapshot = await getDocs(q);
     
+    const docs = await getDocs(collection(db, "SellPostings"));
+    docs.forEach(element => {
+      
+      const arr=AllSellPostings
+      arr.push(element.data())
+      console.log(arr)
+      setAllSellPostings(arr)
+      return
+    });
+   
+   
   }
  
-  getSellPostings()
- }, [])
+  getSellPostings();
+  
+ },[])
   return (
     <div className="postParentDiv">
       <div className="moreView">
@@ -28,23 +40,25 @@ function Posts() {
         </div>
         <div className="cards">
          
-         <div className="card" onClick={navToViewPost}
+         {AllSellPostings.map((x)=>
+          <div className="card" onClick={navToViewPost}
           >
             <div className="favorite">
               <Heart></Heart>
             </div>
             <div className="image">
-              <img src="../../../Images/R15V3.jpg" alt="" />
+              <img src={x.imageURL} alt="" />
             </div>
             <div className="content">
-              <p className="rate">&#x20B9; 250000</p>
-              <span className="kilometer">Two Wheeler</span>
-              <p className="name"> YAMAHA R15V3</p>
+              <p className="rate">&#x20B9; {x.Price}</p>
+              <span className="kilometer">{x.Category}</span>
+              <p className="name"> {x.Name}</p>
             </div>
             <div className="date">
-              <span>Tue May 04 2021</span>
+              <span>{x.date}</span>
             </div>
           </div>
+         )}
          
         </div>
       </div>

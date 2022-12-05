@@ -33,7 +33,7 @@ function Header() {
     
 
   useEffect(() => {
-   console.log(LogedUser)
+  
   },[] )
 
 

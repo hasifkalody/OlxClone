@@ -1,16 +1,19 @@
-import React, { Fragment, useState, } from 'react';
+import React, { Fragment, useContext, useState, } from 'react';
 import './Create.css';
 import {upload} from '../../Firebase/Auth'
 import { useNavigate } from 'react-router-dom';
+import {Contextuser } from '../../App';
 
 
 const Create = () => {
+  const LogedUser = useContext(Contextuser)
+  const uid=LogedUser.uid
   const nav=useNavigate()
   const [Name, setName] = useState()
   const [Category, setCategory] = useState();
   const [Price, setPrice] = useState();
   const [image, setImage] = useState();
-  const [uid, setuid] = useState();
+  // const [uid, setuid] = useState(LogedUser.uid);
   const Handleupload=async()=>{
     await upload(image, Name, Category, Price,uid);
     nav('/')

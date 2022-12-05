@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import {GoogleAuthProvider,getAuth,signInWithPopup,signInWithEmailAndPassword,createUserWithEmailAndPassword,sendPasswordResetEmail,signOut} from 'firebase/auth';
 import {getFirestore,query, getDocs, collection,where,addDoc} from "firebase/firestore";
 import {getStorage, ref, uploadBytes, getDownloadURL,} from 'firebase/storage';
+import { FetchDate } from "../Helpers/Helpers";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCg026Knb05SB9O5AlbspWFDq8128ZwdsM",
@@ -79,15 +80,14 @@ const logout = () => {
 };
 
 // ======================store=================================
-const upload = (image, Name, Category, Price) => {
+const upload = (image, Name, Category, Price,uid) => {
 
   const storageRef = ref(storage, `sellPostings/${image.name}`);
   uploadBytes(storageRef, image).then((snapshot) => {
     getDownloadURL(ref(storage, `sellPostings/${image.name}`))
     .then((url) => {
-      const date=new Date()
-      console.log(date)
-      const SellingItemData = { Name, Category, Price, imageURL: url,date }
+      const date=FetchDate(new Date())
+      const SellingItemData = { Name, Category, Price, imageURL: url,date,uid }
       addDoc(collection(db, "SellPostings"), SellingItemData);
     })
     .catch((error) => {
