@@ -29,6 +29,8 @@
   white-space: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  /* display: none; */
 }
 
 .card {

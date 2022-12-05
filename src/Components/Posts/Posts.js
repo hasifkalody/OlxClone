@@ -6,6 +6,7 @@ import { db } from '../../Firebase/Auth';
 import './Post.css';
 
 function Posts() {
+  const arr=[]
   const [AllSellPostings, setAllSellPostings] = useState([])
   const nav=useNavigate()
   const navToViewPost=()=>{
@@ -16,16 +17,10 @@ function Posts() {
   const getSellPostings= async()=>{
     
     const docs = await getDocs(collection(db, "SellPostings"));
-    docs.forEach(element => {
-      
-      const arr=AllSellPostings
+    docs.forEach(element => {   
       arr.push(element.data())
-      console.log(arr)
-      setAllSellPostings(arr)
-      return
     });
-   
-   
+    setAllSellPostings(arr)
   }
  
   getSellPostings();
@@ -38,7 +33,7 @@ function Posts() {
           <span>Quick Menu</span>
           <span>View more</span>
         </div>
-        <div className="cards">
+        <div className="cards" >
          
          {AllSellPostings.map((x)=>
           <div className="card" onClick={navToViewPost}

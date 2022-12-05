@@ -29,9 +29,21 @@
   white-space: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+}
+.moreView .cards::-webkit-scrollbar{
+  height: 5px;
+}
+.moreView .cards::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+.moreView .cards::-webkit-scrollbar-thumb {
+  background: #002f34 ;
+  border-radius: 3px;
 }
 
 .card {
+  scroll-snap-align: end;
   margin-right: 15px;
   padding: 13px;
   max-width: 222px;
