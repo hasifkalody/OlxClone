@@ -15,6 +15,7 @@
   padding: 16px;
   margin-top: 3em;
   width: 30vw;
+  word-wrap: break-word;
 }
 
 .viewParentDiv .rightSection .productDetails :first-child {
@@ -32,6 +33,7 @@
   border-radius: 6px;
   margin-bottom: 2em;
   width: 100%;
+  word-wrap: break-word;
 }
 
 .viewParentDiv .rightSection .contactDetails {

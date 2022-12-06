@@ -1,15 +1,18 @@
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {useNavigate} from 'react-router-dom'
 import Heart from '../../assets/Heart';
 import { db } from '../../Firebase/Auth';
 import './Post.css';
+import {contextForPostedItem} from '../../Helpers/Helpers'
 
 function Posts() {
+  const obj = useContext(contextForPostedItem)
   const arr=[]
   const [AllSellPostings, setAllSellPostings] = useState([])
   const nav=useNavigate()
-  const navToViewPost=()=>{
+  const navToViewPost=(item)=>{
+    obj.setPostedItem(item)
     nav('/ViewPosts')
   }
  useEffect(() => {
@@ -36,7 +39,7 @@ function Posts() {
         <div className="cards" >
          
          {AllSellPostings.map((x)=>
-          <div className="card" onClick={navToViewPost}
+          <div className="card" onClick={()=>{navToViewPost(x)}}
           >
             <div className="favorite">
               <Heart></Heart>

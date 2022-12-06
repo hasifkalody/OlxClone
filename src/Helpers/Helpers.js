@@ -1,3 +1,5 @@
+import { createContext, useState } from "react";
+const contextForPostedItem=createContext()
 
 const FetchDate=Date=>{
     const Day=Date.getDate()
@@ -7,6 +9,17 @@ const FetchDate=Date=>{
     const Minute=Date.getMinutes()
     const Second=Date.getSeconds()
     return `${Day}/${Month}/${Year}/${Hour}:${Minute}:${Second}`
+};
+
+const PostedItemContext=({children})=>{
+    const [PostedItem, setPostedItem] = useState({})
+    return(
+        <contextForPostedItem.Provider value={{PostedItem, setPostedItem}}>
+        {children}
+        </contextForPostedItem.Provider>
+    )
+   
+
 }
 
-export {FetchDate}
+export {FetchDate,PostedItemContext,contextForPostedItem}
