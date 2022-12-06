@@ -1,16 +1,31 @@
-import React, { useContext, useEffect } from 'react';
+// import { collection, getDocs, query, where } from 'firebase/firestore';
+import { query, collection, getDocs, where } from "firebase/firestore";
+import React, { useContext, useEffect, useState } from 'react';
+import { db } from '../../Firebase/Auth';
 import {contextForPostedItem} from '../../Helpers/Helpers'
 import {Contextuser} from '../../App'
 import './View.css';
 
 function View() {
-  const {name,phone,email }= useContext(Contextuser)
+  const [objpostedUser, setobjpostedUser] = useState({});
+  const {name,email,phone}=objpostedUser
   const obj= useContext(contextForPostedItem);
+  const LogedUser= useContext(Contextuser);
   const Postedobj=obj.PostedItem
-  const {imageURL,date,Name,Price,Category
+  const {imageURL,date,Name,Price,Category,uid
   }=Postedobj;
-  useEffect(() => {
-   
+  const arr=[]
+  useEffect(async() => {
+    const GetPostedUser= async ()=>{
+      const q= query(collection(db,"users"),where("uid","==",uid));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach(element => {
+        arr.push(element.data())
+      });
+    }
+    await GetPostedUser()
+    setobjpostedUser(arr[0])
+    console.log(objpostedUser)
   }, [])
   return (
     <div className="viewParentDiv">
@@ -28,7 +43,7 @@ function View() {
           <span>{date}</span>
         </div>
         <div className="contactDetails">
-          <p>{name}</p>
+          <p>{(LogedUser.uid==uid)?"You": name}</p>
           <p>{email}</p>
           <p>{phone}</p>
         </div>

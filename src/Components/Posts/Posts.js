@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, getDocs} from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react';
 import {useNavigate} from 'react-router-dom'
 import Heart from '../../assets/Heart';
@@ -7,27 +7,24 @@ import './Post.css';
 import {contextForPostedItem} from '../../Helpers/Helpers'
 
 function Posts() {
-  const obj = useContext(contextForPostedItem)
   const arr=[]
-  const [AllSellPostings, setAllSellPostings] = useState([])
+  const obj = useContext(contextForPostedItem)
+  const [AllSellPostings, Set] = useState([])
   const nav=useNavigate()
   const navToViewPost=(item)=>{
     obj.setPostedItem(item)
     nav('/ViewPosts')
   }
- useEffect(() => {
   
-  const getSellPostings= async()=>{
-    
+  useEffect(async() => {
     const docs = await getDocs(collection(db, "SellPostings"));
-    docs.forEach(element => {   
+    await docs.forEach(element => { 
       arr.push(element.data())
     });
-    setAllSellPostings(arr)
-  }
- 
-  getSellPostings();
-  
+    
+  console.log("at Useeffect")
+  await Set(arr)
+  console.log(arr)
  },[])
   return (
     <div className="postParentDiv">
