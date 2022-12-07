@@ -4,9 +4,10 @@ import {useNavigate} from 'react-router-dom'
 import Heart from '../../assets/Heart';
 import { db } from '../../Firebase/Auth';
 import './Post.css';
-import {contextForPostedItem} from '../../Helpers/Helpers'
+import {contextForPostedItem, NoOfVisitsContext} from '../../Helpers/Helpers'
 
 function Posts() {
+  const NoOfVisitsObj = useContext(NoOfVisitsContext)
   const arr=[]
   const obj = useContext(contextForPostedItem)
   const [AllSellPostings, Set] = useState([])
@@ -15,7 +16,7 @@ function Posts() {
     obj.setPostedItem(item)
     nav('/ViewPosts')
   }
-  
+  const NoOfVisits=NoOfVisitsObj.NoOfVisits
   useEffect(async() => {
     const docs = await getDocs(collection(db, "SellPostings"));
     await docs.forEach(element => { 
@@ -25,7 +26,8 @@ function Posts() {
   console.log("at Useeffect")
   await Set(arr)
   console.log(arr)
- },[])
+  console.log(NoOfVisits)
+ },[NoOfVisits])
   return (
     <div className="postParentDiv">
       <div className="moreView">

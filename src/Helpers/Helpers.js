@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 const contextForPostedItem=createContext()
+const NoOfVisitsContext=createContext()
 
 const FetchDate=Date=>{
     const Day=Date.getDate()
@@ -21,5 +22,15 @@ const PostedItemContext=({children})=>{
    
 
 }
+const NoOfVisits=({children})=>{
+    const [NoOfVisits, setNoOfVisits] = useState(1)
+    return(
+        <NoOfVisitsContext.Provider value={{NoOfVisits, setNoOfVisits}}>
+        {children}
+        </NoOfVisitsContext.Provider>
+    )
+   
 
-export {FetchDate,PostedItemContext,contextForPostedItem}
+}
+
+export {FetchDate,PostedItemContext,contextForPostedItem,NoOfVisitsContext,NoOfVisits}

@@ -3,6 +3,7 @@ import './Create.css';
 import {upload} from '../../Firebase/Auth'
 import { useNavigate } from 'react-router-dom';
 import {Contextuser } from '../../App';
+import { NoOfVisitsContext } from '../../Helpers/Helpers';
 
 
 const Create = () => {
@@ -13,10 +14,15 @@ const Create = () => {
   const [Category, setCategory] = useState();
   const [Price, setPrice] = useState();
   const [image, setImage] = useState();
+  const NoOfVisitsobj = useContext(NoOfVisitsContext)
+  const setNoOfVisits= NoOfVisitsobj.setNoOfVisits
   // const [uid, setuid] = useState(LogedUser.uid);
   const Handleupload=async()=>{
     await upload(image, Name, Category, Price,uid);
-    nav('/')
+    nav('/');
+    setTimeout(() => {
+      setNoOfVisits((prev)=>prev+1)
+    }, 2000);
   }
   return (
     <Fragment>

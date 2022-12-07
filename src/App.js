@@ -1,7 +1,7 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import './App.css';
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
-import {PostedItemContext} from '../src/Helpers/Helpers'
+import {NoOfVisits, PostedItemContext} from '../src/Helpers/Helpers'
 
 
 
@@ -22,7 +22,6 @@ export const Contextuser=createContext()
 // ----------------------to be moved to deperate file-----
 
 function App() {
- 
   const [LogedUser, setLogedUser] = useState({})
   useEffect(() => {
     onAuthStateChanged(auth,async (user) => {
@@ -44,6 +43,7 @@ function App() {
     <div>
       <Contextuser.Provider value={LogedUser}>
         <PostedItemContext>
+          <NoOfVisits>
           <Router>
             <Routes>
               <Route path='/'>
@@ -63,6 +63,7 @@ function App() {
               </Route>
             </Routes>
           </Router>
+          </NoOfVisits>
         </PostedItemContext>
       </Contextuser.Provider>
       
