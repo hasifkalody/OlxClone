@@ -1,0 +1,98 @@
+.lo_Conatainer{
+    width:100vw;
+    box-sizing: border-box;
+    height: 100vh;
+    background-color: rgba(0,0,0,.65);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.lo_card{
+    width: 350px;
+    height: 500px;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 10px;
+}
+.lo_sliderDisplay{
+    width: 95%;
+    height: 35%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+}
+.lo_slider{
+    width: 300%;
+    height: 100%;
+    display: flex;
+    position: absolute; 
+    left:0;
+    transition: .5s ;
+}
+.lo_slider div:nth-child(1){
+    width: calc((1/3)*100%);
+    height: 100%;
+    background-color: yellow;
+    flex-shrink: 0;
+}
+.lo_slider div:nth-child(2){
+    width: calc((1/3)*100%);
+    height: 100%;
+    background-color: green;
+    flex-shrink: 0;
+}
+.lo_slider div:nth-child(3){
+    width: calc((1/3)*100%);
+    height: 100%;
+    background-color: orange;
+    flex-shrink: 0;
+}
+.lo_button{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: grey;
+    
+}
+.lo_butDiv{
+    display: flex;
+    justify-content: space-between;
+    width: 15%;
+    margin-top: 20px;
+}
+#first:target ~.lo_slider{
+    left:0
+}
+#second:target~.lo_slider{
+    left:-100%
+}
+#third:target~.lo_slider{
+    left:-200%
+}
+.lo_sliderButtonLeft,.lo_sliderButtonRight{
+    width: 10px;
+    height: 40px;
+    border: none;
+    background-color: none;
+    outline: none;
+    z-index: 3;
+}
+.lo_sliderButtonLeft{
+    transform: translateX(-3px);
+}
+.lo_sliderButtonRight{
+    transform: translateX(-3px);
+}
+#first,#second,#third{
+    position: absolute;
+    
+}

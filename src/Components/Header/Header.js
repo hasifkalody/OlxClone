@@ -11,15 +11,27 @@ import { useNavigate } from 'react-router-dom';
 // import { useAuthState } from "react-firebase-hooks/auth";
 import {logout} from "../../Firebase/Auth";
 import {Contextuser} from '../../App'
-function Header() {
+import { contextForPostedItem } from '../../Helpers/Helpers';
+function Header({setLoginStatus}) {
+  
   const LogedUser=useContext(Contextuser)
   const LogedUserName=LogedUser.name
   const [dropdownClicked, dropdownstatus] = useState(false)
   const nav = useNavigate()
-  const toggleClass=()=>{dropdownstatus(!dropdownClicked)}
-  const toLogin =()=>{
-    LogedUserName?toggleClass():nav('/login')
+  const toggleClass=()=>{
+    dropdownstatus(!dropdownClicked)}
+  const HandlePopUP=()=>{
+    setLoginStatus((x)=>!x);
+    document.body.style.height="100vh"
+    document.body.style.overflow="hidden"
+  } 
+  const HandleDropDown=()=>{
     
+  } 
+  const toLogin =()=>{ 
+  }
+  const LoginOptions =()=>{
+    LogedUserName?HandleDropDown():HandlePopUP()
   }
   const toLogOut =()=>{
     logout();
@@ -66,7 +78,7 @@ function Header() {
         </div>
        <div>
             <div className="loginPage">
-            <span onClick={toLogin}>{LogedUserName?`${LogedUserName} >`:"Login"}</span>
+            <span onClick={LoginOptions}>{LogedUserName?`${LogedUserName} >`:"Login"}</span>
             <hr />
             </div>
          

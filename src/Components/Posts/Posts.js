@@ -22,11 +22,7 @@ function Posts() {
     await docs.forEach(element => { 
       arr.push(element.data())
     });
-    
-  console.log("at Useeffect")
   await Set(arr)
-  console.log(arr)
-  console.log(NoOfVisits)
  },[NoOfVisits])
   return (
     <div className="postParentDiv">
