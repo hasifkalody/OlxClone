@@ -9,7 +9,7 @@ function Home() {
   const [DontShowLogin, setLoginStatus] = useState(true)
   return (
     <div className="homeParentDiv">
-      {DontShowLogin?"":<LoginOptions/>}
+      {DontShowLogin?"":<LoginOptions setLoginStatus={setLoginStatus}/>}
       <Header setLoginStatus={setLoginStatus} />
       <Banner />
       <Posts />
