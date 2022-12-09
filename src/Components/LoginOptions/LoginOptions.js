@@ -4,24 +4,29 @@ import AngleBracketLeft from '../../assets/AngleBracketLeft'
 import AngleBracketRight from '../../assets/AngleBracketRight'
 import imageForCarousel from '../../Components/LoginOptions/imageForCarousel.png'
 function LoginOptions({setLoginStatus}) {
-var nx=0
+  const [slider, setslider] = useState("")
+  const [indicator, setindicator] = useState("")
+  const [ind, setind] = useState(0)
+  const [NoOfTimesIntoUseEffect, setNoOfTimesIntoUseEffect] = useState(0)
+  setTimeout(() => {
+    setind(setind+1)
+  }, 10);
+
+  var nx=1;
   const slideTo=(n)=>{
+    console.log(indicator)
+    console.log(slider)
     nx=n;
-    console.log("argument"+n)
-    console.log(nx)
-    const slider=document.getElementById("idSlider")
-    const f1=()=>{slider.style.left="0"}
-    const f2=()=>{slider.style.left="-100%"}
-    const f3=()=>{slider.style.left="-200%"}
+    for(let i=0;i<indicator.length;i++){indicator[i].style.backgroundColor=' rgba(0,47,52,.36)'}
+    const f1=()=>{slider.style.left="0";indicator[0].style.backgroundColor='#23e5db'}
+    const f2=()=>{slider.style.left="-100%";indicator[1].style.backgroundColor='#23e5db';}
+    const f3=()=>{slider.style.left="-200%";indicator[2].style.backgroundColor='#23e5db'}
     n==1&&f1()
     n==2&&f2()
     n==3&&f3() 
   }
 
   const handleN=(x)=>{
-    // setn((y)=>y+x);
-    console.log("argument"+x)
-    console.log(nx);
     nx+=x;
     if (nx >3){nx=1};
     if (nx <1){nx=3}
@@ -30,15 +35,19 @@ var nx=0
   const popDown=()=>{
     setLoginStatus((x)=>!x)
   }
-// useEffect(() => {
-//   document.body.style.height="100vh"
-//   document.body.style.overflow="hidden"
-//   return () => {
-//     document.body.style.height="auto"
-//     document.body.style.overflow="scroll"
-//     document.body.style.overflowX="hidden"
-//   };
-// }, [])
+useEffect(() => {
+  setslider(document.getElementById("idSlider"))
+  setindicator(document.getElementsByClassName('lo_button'))
+  if (NoOfTimesIntoUseEffect==1){indicator[0].style.backgroundColor='#23e5db'}
+  setNoOfTimesIntoUseEffect(1)
+  document.body.style.height="100vh"
+  document.body.style.overflow="hidden"
+  return () => {
+    document.body.style.height="auto"
+    document.body.style.overflow="scroll"
+    document.body.style.overflowX="hidden"
+  };
+}, [ind])
   return (
     <div className='lo_Conatainer'>
       <div className='lo_card'>

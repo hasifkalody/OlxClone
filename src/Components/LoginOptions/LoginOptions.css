@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    user-select: none;
 }
 .lo_card{
     width: 350px;
@@ -54,11 +55,11 @@
     flex-shrink: 0;
 }
 .lo_button{
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     background-color: grey;
-    
+    transition: .5s ease;
 }
 .lo_butDiv{
     display: flex;

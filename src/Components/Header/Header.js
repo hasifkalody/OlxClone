@@ -22,8 +22,6 @@ function Header({setLoginStatus}) {
     dropdownstatus(!dropdownClicked)}
   const HandlePopUP=()=>{
     setLoginStatus((x)=>!x);
-    // document.body.style.height="100vh"
-    // document.body.style.overflow="hidden"
   
   } 
   const HandleDropDown=()=>{
