@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import  './LoginOptions.css'
+import GoogleIcon from '../../assets/GoogleIcon.js'
+import MobileIcon from '../../assets/MobileIcon'
 import AngleBracketLeft from '../../assets/AngleBracketLeft'
 import AngleBracketRight from '../../assets/AngleBracketRight'
 import imageForCarousel from '../../Components/LoginOptions/imageForCarousel.png'
+import {useNavigate} from 'react-router-dom'
 function LoginOptions({setLoginStatus}) {
+  const nav=useNavigate()
   const [slider, setslider] = useState("")
   const [indicator, setindicator] = useState("")
   const [ind, setind] = useState(0)
@@ -81,10 +85,18 @@ useEffect(() => {
           <a href="#third" className='lo_button'></a> */}
         </div>
        
-        
-        <div></div>
-        <div></div>
-
+        <button className='lo_loginOpt'><MobileIcon/><p>Continue with Phone</p></button>
+        <button className='lo_loginOpt'><GoogleIcon/><p>Continue with Google</p></button>
+        <div className='lo_Bottom1'>
+        <p>OR</p>
+        <span onClick={()=>{nav('/login')}}><p>Login with Email</p></span>
+        </div>
+        <div className='lo_Bottom2'>
+        <p>All your personal details are safe with us.</p>
+        </div>
+        <div className='lo_Bottom3'>
+        <p>If you continue, you  are accepting <span>OLX Terms and Conditions and  Privacy Policy</span> </p> 
+        </div>
       </div>
     </div>
   )
