@@ -7,7 +7,14 @@ import P4 from '../../assets/ProfileDropDown/P4'
 import P5 from '../../assets/ProfileDropDown/P5'
 import P6 from '../../assets/ProfileDropDown/P6'
 import P7 from '../../assets/ProfileDropDown/P7'
-function ProfileDropDown() {
+import {logout} from "../../Firebase/Auth";
+
+function ProfileDropDown({setShowDropDown}) {
+  const handleLogout=()=>{
+      logout();
+      setShowDropDown((state)=>!state)
+  }
+
   return (
       <div className='pd_profileCard'>
         <div className='pd_arrow'>
@@ -66,7 +73,7 @@ function ProfileDropDown() {
                 <div><P6/></div>
                 <div><p>Install OLX Lite app</p></div>
             </div>
-            <div className='pd_thirdElContents'>
+            <div id='pd_LogOut' className='pd_thirdElContents' onClick={handleLogout}>
                 <div><P7/></div>
                 <div><p>Logout</p></div>
             </div>

@@ -94,8 +94,6 @@
   margin-right: 5px;
 }
 
-.language svg {
-}
 
 .span {
   text-decoration: none;
@@ -106,15 +104,19 @@
   margin-right: 5px;
 }
 
-.loginPage hr {
+/* .loginPage hr {
   margin: 0;
   background-color: black;
   height: 2px;
-}
-
-.loginPage a{
+} */
+/* .loginPage{
+  width: 70px;
+  height: 40px;
+  cursor: pointer;
+} */
+/* .loginPage a{
   text-decoration: none;
-}
+} */
 
 .sellMenu {
   position: relative;
@@ -168,8 +170,25 @@
 .logOutButon{
   text-decoration: none;
 }
-.logOutButon hr {
-  margin: 0;
-  background-color: black;
-  height: 2px;
+
+.hd_AfterLogin{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hd_AfterLogin img{
+  width: 40px;
+}
+.pd_beforeLogin{
+    color: #002f34;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    height: 26px;
+    margin: 0;
+    border-bottom:3px solid #002f34; ;
+}
+
+.pd_beforeLogin:hover{
+  border-bottom:none;
 }

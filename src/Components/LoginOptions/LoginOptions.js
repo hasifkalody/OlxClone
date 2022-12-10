@@ -18,8 +18,6 @@ function LoginOptions({setLoginStatus}) {
 
   var nx=1;
   const slideTo=(n)=>{
-    console.log(indicator)
-    console.log(slider)
     nx=n;
     for(let i=0;i<indicator.length;i++){indicator[i].style.backgroundColor=' rgba(0,47,52,.36)'}
     const f1=()=>{slider.style.left="0";indicator[0].style.backgroundColor='#23e5db'}

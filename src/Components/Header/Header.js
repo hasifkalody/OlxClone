@@ -7,36 +7,40 @@ import Arrow from '../../assets/Arrow';
 import SellButton from '../../assets/SellButton';
 import SellButtonPlus from '../../assets/SellButtonPlus';
 import { useNavigate } from 'react-router-dom';
-
+import ArrowDwn from '../../assets/ArrowDwn';
 // import { useAuthState } from "react-firebase-hooks/auth";
-import {logout} from "../../Firebase/Auth";
 import {Contextuser} from '../../App'
-import { contextForPostedItem } from '../../Helpers/Helpers';
+
+
+const AfterLogin=()=>{
+  return(
+    <div className='hd_AfterLogin'>
+      <div><img src="images/avatar_4.png" alt="Avatar" /></div>
+      <div><ArrowDwn/></div>
+    </div>
+  )
+}
+const BeforeLogin=()=>{
+  return(
+    <div className='pd_beforeLogin'>
+      <p>Login</p>
+    </div>
+  )
+}
+
 function Header({setLoginStatus,setShowDropDown}) {
   
   const LogedUser=useContext(Contextuser)
   const LogedUserName=LogedUser.name
-  const [dropdownClicked, dropdownstatus] = useState(false)
   const nav = useNavigate()
-  const toggleClass=()=>{
-    dropdownstatus(!dropdownClicked)}
   const HandlePopUP=()=>{
     setLoginStatus((x)=>!x);
-  
   } 
   const HandleDropDown=()=>{
     setShowDropDown((state)=>!state)
-    // logout();
   } 
-  const toLogin =()=>{ 
-  }
   const LoginOptions =()=>{
     LogedUserName?HandleDropDown():HandlePopUP()
-  }
-  const toLogOut =()=>{
-    logout();
-    dropdownstatus(!dropdownClicked)
-    
   }
   const toSell=()=>{
     LogedUserName?nav('/sell'):nav('/login')
@@ -78,17 +82,9 @@ function Header({setLoginStatus,setShowDropDown}) {
         </div>
        <div>
             <div className="loginPage">
-            <span onClick={LoginOptions}>{LogedUserName?`${LogedUserName} >`:"Login"}</span>
-            <hr />
-            </div>
-         
-            <div className={dropdownClicked?"logOutButon":"hideDropDown"}>
-            <span onClick={toLogOut}>LogOut</span>
-            <hr />
+            <span onClick={LoginOptions}>{LogedUserName?<AfterLogin/>:<BeforeLogin/>}</span>
             </div>
        </div>
-            
-    
 
         <div onClick={toSell} className="sellMenu">
           <SellButton></SellButton>
