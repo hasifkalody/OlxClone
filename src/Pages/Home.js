@@ -7,11 +7,12 @@ import LoginOptions from '../Components/LoginOptions/LoginOptions';
 import ProfileDropDown from '../Components/ProfileDropDown/ProfileDropDown';
 function Home() {
   const [DontShowLogin, setLoginStatus] = useState(true)
+  const [ShowDropDown, setShowDropDown] = useState(false)
   return (
     <div className="homeParentDiv">
-      <ProfileDropDown/>
+      {ShowDropDown&&<ProfileDropDown setShowDropDown={setShowDropDown}/>}
       {DontShowLogin?"":<LoginOptions setLoginStatus={setLoginStatus}/>}
-      <Header setLoginStatus={setLoginStatus} />
+      <Header setLoginStatus={setLoginStatus} setShowDropDown={setShowDropDown} />
       <Banner />
       <Posts />
       <Footer />

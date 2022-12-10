@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import {logout} from "../../Firebase/Auth";
 import {Contextuser} from '../../App'
 import { contextForPostedItem } from '../../Helpers/Helpers';
-function Header({setLoginStatus}) {
+function Header({setLoginStatus,setShowDropDown}) {
   
   const LogedUser=useContext(Contextuser)
   const LogedUserName=LogedUser.name
@@ -25,7 +25,8 @@ function Header({setLoginStatus}) {
   
   } 
   const HandleDropDown=()=>{
-    
+    setShowDropDown((state)=>!state)
+    // logout();
   } 
   const toLogin =()=>{ 
   }
