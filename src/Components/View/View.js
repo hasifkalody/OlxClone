@@ -23,7 +23,7 @@ function View() {
         arr.push(element.data())
       });
     }
-    await GetPostedUser()
+    GetPostedUser()
     setobjpostedUser(arr[0])
     console.log(objpostedUser)
   }, [])

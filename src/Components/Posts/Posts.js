@@ -5,6 +5,7 @@ import Heart from '../../assets/Heart';
 import { db } from '../../Firebase/Auth';
 import './Post.css';
 import {contextForPostedItem, NoOfVisitsContext} from '../../Helpers/Helpers'
+import {Contextuser} from '../../App'
 
 function Posts() {
   const NoOfVisitsObj = useContext(NoOfVisitsContext)
@@ -17,12 +18,16 @@ function Posts() {
     nav('/ViewPosts')
   }
   const NoOfVisits=NoOfVisitsObj.NoOfVisits
+  const LogedUser=useContext(Contextuser);
+  const addToFav=(obj)=>{
+  //  console.log(LogedUser)
+  }
   useEffect(async() => {
     const docs = await getDocs(collection(db, "SellPostings"));
-    await docs.forEach(element => { 
+      docs.forEach(element => { 
       arr.push(element.data())
     });
-  await Set(arr)
+  Set(arr)
  },[NoOfVisits])
   return (
     <div className="postParentDiv">
@@ -36,7 +41,7 @@ function Posts() {
          {AllSellPostings.map((x)=>
           <div className="card" onClick={()=>{navToViewPost(x)}}
           >
-            <div className="favorite">
+            <div className="favorite" onClick={()=>{addToFav(x)}}>
               <Heart></Heart>
             </div>
             <div className="image">
