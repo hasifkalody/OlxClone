@@ -6,7 +6,8 @@ import AngleBracketLeft from '../../assets/AngleBracketLeft'
 import AngleBracketRight from '../../assets/AngleBracketRight'
 import imageForCarousel from '../../Components/LoginOptions/imageForCarousel.png'
 import {useNavigate} from 'react-router-dom'
-function LoginOptions({setLoginStatus}) {
+function LoginOptions({setLoginStatus,favLogin,setfavLogin}) {
+  
   const nav=useNavigate()
   const [slider, setslider] = useState("")
   const [indicator, setindicator] = useState("")
@@ -40,7 +41,13 @@ function LoginOptions({setLoginStatus}) {
 useEffect(() => {
   setslider(document.getElementById("idSlider"))
   setindicator(document.getElementsByClassName('lo_button'))
-  if (NoOfTimesIntoUseEffect==1){indicator[0].style.backgroundColor='#23e5db'}
+  if (NoOfTimesIntoUseEffect==1){
+    indicator[0].style.backgroundColor='#23e5db'
+    if(favLogin!=false){
+      slideTo(favLogin)
+      setfavLogin(false)
+    }
+  }
   setNoOfTimesIntoUseEffect(1)
   document.body.style.height="100vh"
   document.body.style.overflow="hidden"

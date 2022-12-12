@@ -1,34 +1,56 @@
-import { collection, getDocs} from 'firebase/firestore';
+import { addDoc, collection, getDoc, getDocs, query, where } from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Heart from '../../assets/Heart';
 import { db } from '../../Firebase/Auth';
 import './Post.css';
-import {contextForPostedItem, NoOfVisitsContext} from '../../Helpers/Helpers'
-import {Contextuser} from '../../App'
+import { contextForPostedItem, NoOfVisitsContext } from '../../Helpers/Helpers'
+import { Contextuser } from '../../App'
 
-function Posts() {
+function Posts({setLoginStatus,setfavLogin}) {
   const NoOfVisitsObj = useContext(NoOfVisitsContext)
-  const arr=[]
+  const arr = []
   const obj = useContext(contextForPostedItem)
   const [AllSellPostings, Set] = useState([])
-  const nav=useNavigate()
-  const navToViewPost=(item)=>{
+  const nav = useNavigate()
+  const navToViewPost = (item) => {
     obj.setPostedItem(item)
     nav('/ViewPosts')
   }
-  const NoOfVisits=NoOfVisitsObj.NoOfVisits
-  const LogedUser=useContext(Contextuser);
-  const addToFav=(obj)=>{
-  //  console.log(LogedUser)
+  const NoOfVisits = NoOfVisitsObj.NoOfVisits
+  const LogedUser = useContext(Contextuser);
+  const favExists = []
+  const addToFav = async (obj) => {
+    if(LogedUser.name){
+      const colref = collection(db, "favourites")
+      const q = query(colref, where("uidOfAddedUser", "==", LogedUser.uid), where("Name", "==", obj.Name))
+      const data = await getDocs(q)
+      data.forEach((obj) => {
+        favExists.push(obj.data())
+      })
+      if (favExists[0]) {
+  
+      }
+      else {
+        console.log("atelse")
+        obj.uidOfAddedUser = LogedUser.uid
+        await addDoc(colref, obj)
+      }
+  
+    }
+    else{
+      setfavLogin(3)
+      setLoginStatus((state)=>!state)
+    }
+   
   }
-  useEffect(async() => {
+  useEffect(async () => {
     const docs = await getDocs(collection(db, "SellPostings"));
-      docs.forEach(element => { 
+    docs.forEach(element => {
       arr.push(element.data())
     });
-  Set(arr)
- },[NoOfVisits])
+    Set(arr)
+  }, [NoOfVisits])
   return (
     <div className="postParentDiv">
       <div className="moreView">
@@ -37,27 +59,28 @@ function Posts() {
           <span>View more</span>
         </div>
         <div className="cards" >
-         
-         {AllSellPostings.map((x)=>
-          <div className="card" onClick={()=>{navToViewPost(x)}}
-          >
-            <div className="favorite" onClick={()=>{addToFav(x)}}>
-              <Heart></Heart>
+
+          {AllSellPostings.map((x) =>
+            <div className="card">
+              <div className="favorite" onClick={() => { addToFav(x) }}>
+                <Heart></Heart>
+              </div>
+              <div onClick={() => { navToViewPost(x) }}>
+                <div className="image">
+                  <img src={x.imageURL} alt="" />
+                </div>
+                <div className="content">
+                  <p className="rate">&#x20B9; {x.Price}</p>
+                  <span className="kilometer">{x.Category}</span>
+                  <p className="name"> {x.Name}</p>
+                </div>
+                <div className="date">
+                  <span>{x.date}</span>
+                </div>
+              </div>
             </div>
-            <div className="image">
-              <img src={x.imageURL} alt="" />
-            </div>
-            <div className="content">
-              <p className="rate">&#x20B9; {x.Price}</p>
-              <span className="kilometer">{x.Category}</span>
-              <p className="name"> {x.Name}</p>
-            </div>
-            <div className="date">
-              <span>{x.date}</span>
-            </div>
-          </div>
-         )}
-         
+          )}
+
         </div>
       </div>
       <div className="recommendations">

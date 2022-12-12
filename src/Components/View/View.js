@@ -23,9 +23,9 @@ function View() {
         arr.push(element.data())
       });
     }
-    GetPostedUser()
+    await GetPostedUser()
     setobjpostedUser(arr[0])
-    console.log(objpostedUser)
+    // console.log(objpostedUser)
   }, [])
   return (
     <div className="viewParentDiv">
