@@ -92,7 +92,7 @@ const upload = (image, Name, Category, Price,uid) => {
       // const document=await getDoc(doc(db, "SellPostings",Addeddoc.id));
       // console.log(document.exists())
       // console.log(document.data())
-      await updateDoc(doc(db, "SellPostings",Addeddoc.id),{uid:"Changed"})
+      await updateDoc(doc(db, "SellPostings",Addeddoc.id),{id:Addeddoc.id})
     })
     .catch((error) => {
       console.log(error)

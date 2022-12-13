@@ -62,14 +62,16 @@
   cursor: pointer;
 }
 
-.card .favorite {
+.card .ps_favorite {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   position:absolute;
   right: 5px;
 }
-
+.ps_favoriteActive{
+  background-color: black;
+}
 .card .image {
   display: flex;
   justify-content: center;

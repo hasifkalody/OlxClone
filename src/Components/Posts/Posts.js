@@ -1,7 +1,8 @@
-import { addDoc, collection, getDoc, getDocs, query, where } from 'firebase/firestore';
+import { addDoc, collection, doc, getDoc, getDocs, query, updateDoc, where } from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import Heart from '../../assets/Heart';
+import HeartActive from '../../assets/HeartActive';
 import { db } from '../../Firebase/Auth';
 import './Post.css';
 import { contextForPostedItem, NoOfVisitsContext } from '../../Helpers/Helpers'
@@ -19,24 +20,32 @@ function Posts({setLoginStatus,setfavLogin}) {
   }
   const NoOfVisits = NoOfVisitsObj.NoOfVisits
   const LogedUser = useContext(Contextuser);
-  const favExists = []
+  let favExists = []
+  const [update, setUpdate] = useState(0)
   const addToFav = async (obj) => {
     if(LogedUser.name){
-      const colref = collection(db, "favourites")
-      const q = query(colref, where("uidOfAddedUser", "==", LogedUser.uid), where("Name", "==", obj.Name))
+      // back
+      const colref = collection(db, "SellPostings")
+      const q = query(colref, where("uidOfAddedUser", "==", LogedUser.uid), where("id", "==", obj.id))
       const data = await getDocs(q)
+      favExists=[]
       data.forEach((obj) => {
         favExists.push(obj.data())
+      
       })
       if (favExists[0]) {
-  
+        
+        console.log("already favouritd")
+        await updateDoc(doc(db,"SellPostings",obj.id),{uidOfAddedUser:null,AddedToFav : false})
+        // document.getElementById(ind).firstChild.remove()
       }
       else {
+       
         console.log("atelse")
-        obj.uidOfAddedUser = LogedUser.uid
-        await addDoc(colref, obj)
+        await updateDoc(doc(db,"SellPostings",obj.id),{uidOfAddedUser:LogedUser.uid,AddedToFav : true})
+        // document.getElementById(obj.id).style.backgroundColor="black"
       }
-  
+      setUpdate(update+1)
     }
     else{
       setfavLogin(3)
@@ -50,7 +59,7 @@ function Posts({setLoginStatus,setfavLogin}) {
       arr.push(element.data())
     });
     Set(arr)
-  }, [NoOfVisits])
+  }, [NoOfVisits,update])
   return (
     <div className="postParentDiv">
       <div className="moreView">
@@ -62,8 +71,8 @@ function Posts({setLoginStatus,setfavLogin}) {
 
           {AllSellPostings.map((x) =>
             <div className="card">
-              <div className="favorite" onClick={() => { addToFav(x) }}>
-                <Heart></Heart>
+              <div  className="ps_favorite" onClick={() => { addToFav(x) }}>
+              {LogedUser.name?x.AddedToFav?<HeartActive/>:<Heart/>:<Heart/>}
               </div>
               <div onClick={() => { navToViewPost(x) }}>
                 <div className="image">
