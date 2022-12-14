@@ -18,7 +18,8 @@ const Create = () => {
   const setNoOfVisits= NoOfVisitsobj.setNoOfVisits
   // const [uid, setuid] = useState(LogedUser.uid);
   const Handleupload=()=>{
-     upload(image, Name, Category, Price,uid,nav);
+     upload(image, Name, Category, Price,uid,setNoOfVisits);
+     nav('/')
     // setTimeout(() => {
     //   setNoOfVisits((prev)=>prev+1)
     // }, 2000);

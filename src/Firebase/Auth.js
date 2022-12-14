@@ -80,7 +80,7 @@ const logout = () => {
 };
 
 // ======================store=================================
-const upload = (image, Name, Category, Price,uid,nav) => {
+const upload = (image, Name, Category, Price,uid,setNoOfVisits) => {
 
   const storageRef = ref(storage, `sellPostings/${image.name}`);
   uploadBytes(storageRef, image).then((snapshot) => {
@@ -93,7 +93,7 @@ const upload = (image, Name, Category, Price,uid,nav) => {
       // console.log(document.exists())
       // console.log(document.data())
       await updateDoc(doc(db, "SellPostings",Addeddoc.id),{id:Addeddoc.id});
-      // nav('/')
+      setNoOfVisits((prev)=>prev+1)
     })
     .catch((error) => {
       console.log(error)

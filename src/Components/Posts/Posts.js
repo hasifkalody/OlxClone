@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, getDoc, getDocs, query, updateDoc, where } from 'firebase/firestore';
+import { addDoc, collection, doc, getDoc, getDocs, query, updateDoc, where,arrayUnion } from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import Heart from '../../assets/Heart';
@@ -35,7 +35,8 @@ function Posts({setLoginStatus,setfavLogin}) {
     if (LogedUser.name) {console.log(CmngFrmFldOprtn)
       if (CmngFrmFldOprtn.status) {
         try {console.log("at try")
-          await updateDoc(doc(db, "SellPostings", CmngFrmFldOprtn.item.id), { uidOfAddedUser: LogedUser.uid, AddedToFav: true })
+        await updateDoc(doc(db,"SellPostings",CmngFrmFldOprtn.item.id),{uidsFvrtdUsrs: arrayUnion(LogedUser.uid)})
+          // await updateDoc(doc(db, "SellPostings", CmngFrmFldOprtn.item.id), { uidOfAddedUser: LogedUser.uid, AddedToFav: true })
           setCmngFrmFldOprtn({})
         }
         catch {

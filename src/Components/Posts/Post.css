@@ -102,6 +102,9 @@
   overflow: hidden;
   height: 25px;
 }
+.card {
+  overflow: hidden;
+}
 .card .date {
   display: flex;
   justify-content: flex-end;
