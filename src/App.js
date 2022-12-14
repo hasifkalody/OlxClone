@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import './App.css';
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 import {NoOfVisits, PostedItemContext} from '../src/Helpers/Helpers'
+import {FrmFldOprtn} from '../src/Helpers/Helpers'
 
 
 
@@ -44,6 +45,7 @@ function App() {
       <Contextuser.Provider value={LogedUser}>
         <PostedItemContext>
           <NoOfVisits>
+          <FrmFldOprtn>
           <Router>
             <Routes>
               <Route path='/'>
@@ -63,6 +65,7 @@ function App() {
               </Route>
             </Routes>
           </Router>
+          </FrmFldOprtn>
           </NoOfVisits>
         </PostedItemContext>
       </Contextuser.Provider>

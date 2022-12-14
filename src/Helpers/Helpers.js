@@ -1,6 +1,14 @@
+
+import {query, getDocs, collection,where,doc, updateDoc} from "firebase/firestore";
+// import {getStorage, ref, uploadBytes, getDownloadURL,} from 'firebase/storage';
+import { db } from '../Firebase/Auth'
+
+
+
 import { createContext, useState } from "react";
 const contextForPostedItem=createContext()
 const NoOfVisitsContext=createContext()
+const cntxtCmngFrmFldOprtn= createContext()
 
 const FetchDate=Date=>{
     const Day=Date.getDate()
@@ -33,4 +41,51 @@ const NoOfVisits=({children})=>{
 
 }
 
-export {FetchDate,PostedItemContext,contextForPostedItem,NoOfVisitsContext,NoOfVisits}
+
+
+
+ const addToFav = async (obj,LogedUser,update, setUpdate,setfavLogin,setLoginStatus,setCmngFrmFldOprtn) => {
+  let favExists = []
+    if(LogedUser.name){
+      // back
+      const colref = collection(db, "SellPostings")
+      const q = query(colref, where("uidOfAddedUser", "==", LogedUser.uid), where("id", "==", obj.id))
+      const data = await getDocs(q)
+      favExists=[]
+      data.forEach((obj) => {
+        favExists.push(obj.data())
+      
+      })
+      if (favExists[0]) {
+        
+        console.log("already favouritd")
+        await updateDoc(doc(db,"SellPostings",obj.id),{uidOfAddedUser:null,AddedToFav : false})
+        // document.getElementById(ind).firstChild.remove()
+      }
+      else {
+       
+        console.log("atelse")
+        await updateDoc(doc(db,"SellPostings",obj.id),{uidOfAddedUser:LogedUser.uid,AddedToFav : true})
+        // document.getElementById(obj.id).style.backgroundColor="black"
+      }
+      setUpdate(update+1)
+    }
+    else{
+      setfavLogin(3)
+      setLoginStatus((state)=>!state);
+      setCmngFrmFldOprtn({status:true,item:obj})
+    }
+   
+  }
+
+  const FrmFldOprtn=({children})=>{
+    const [CmngFrmFldOprtn, setCmngFrmFldOprtn] = useState({})
+  return(
+    <cntxtCmngFrmFldOprtn.Provider value={{CmngFrmFldOprtn,setCmngFrmFldOprtn}}>
+      {children}
+    </cntxtCmngFrmFldOprtn.Provider>
+  )
+
+  }
+
+export {FetchDate,PostedItemContext,contextForPostedItem,NoOfVisitsContext,NoOfVisits,addToFav, FrmFldOprtn,cntxtCmngFrmFldOprtn}

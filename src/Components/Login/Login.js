@@ -13,7 +13,6 @@ function Login() {
     const callback=(loginResponse)=>{
       if(loginResponse.loginError)LoginErrstatus(loginResponse.loginError)
       else nav(loginResponse)
-      console.log(loginResponse)
     }
     
     logInWithEmailAndPassword(email,password,callback);

@@ -7,9 +7,13 @@ import { db } from '../../Firebase/Auth';
 import './Post.css';
 import { contextForPostedItem, NoOfVisitsContext } from '../../Helpers/Helpers'
 import { Contextuser } from '../../App'
+import {addToFav as favfn} from '../../Helpers/Helpers'
+import {cntxtCmngFrmFldOprtn} from '../../Helpers/Helpers'
+
 
 function Posts({setLoginStatus,setfavLogin}) {
   const NoOfVisitsObj = useContext(NoOfVisitsContext)
+  const {CmngFrmFldOprtn,setCmngFrmFldOprtn} = useContext(cntxtCmngFrmFldOprtn)
   const arr = []
   const obj = useContext(contextForPostedItem)
   const [AllSellPostings, Set] = useState([])
@@ -20,46 +24,34 @@ function Posts({setLoginStatus,setfavLogin}) {
   }
   const NoOfVisits = NoOfVisitsObj.NoOfVisits
   const LogedUser = useContext(Contextuser);
-  let favExists = []
   const [update, setUpdate] = useState(0)
-  const addToFav = async (obj) => {
-    if(LogedUser.name){
-      // back
-      const colref = collection(db, "SellPostings")
-      const q = query(colref, where("uidOfAddedUser", "==", LogedUser.uid), where("id", "==", obj.id))
-      const data = await getDocs(q)
-      favExists=[]
-      data.forEach((obj) => {
-        favExists.push(obj.data())
-      
-      })
-      if (favExists[0]) {
-        
-        console.log("already favouritd")
-        await updateDoc(doc(db,"SellPostings",obj.id),{uidOfAddedUser:null,AddedToFav : false})
-        // document.getElementById(ind).firstChild.remove()
-      }
-      else {
-       
-        console.log("atelse")
-        await updateDoc(doc(db,"SellPostings",obj.id),{uidOfAddedUser:LogedUser.uid,AddedToFav : true})
-        // document.getElementById(obj.id).style.backgroundColor="black"
-      }
-      setUpdate(update+1)
-    }
-    else{
-      setfavLogin(3)
-      setLoginStatus((state)=>!state)
-    }
-   
+  
+  const addToFav=(obj)=>{
+    favfn(obj,LogedUser,update, setUpdate,setfavLogin,setLoginStatus,setCmngFrmFldOprtn)
   }
+
+
   useEffect(async () => {
+    if (LogedUser.name) {console.log(CmngFrmFldOprtn)
+      if (CmngFrmFldOprtn.status) {
+        try {console.log("at try")
+          await updateDoc(doc(db, "SellPostings", CmngFrmFldOprtn.item.id), { uidOfAddedUser: LogedUser.uid, AddedToFav: true })
+          setCmngFrmFldOprtn({})
+        }
+        catch {
+          alert("error")
+        }
+      }
+    }
+    console.log("above fetch")
     const docs = await getDocs(collection(db, "SellPostings"));
     docs.forEach(element => {
       arr.push(element.data())
     });
     Set(arr)
-  }, [NoOfVisits,update])
+  }, [NoOfVisits,update,LogedUser])
+
+
   return (
     <div className="postParentDiv">
       <div className="moreView">

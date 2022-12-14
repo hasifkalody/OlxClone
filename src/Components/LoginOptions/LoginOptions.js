@@ -6,7 +6,7 @@ import AngleBracketLeft from '../../assets/AngleBracketLeft'
 import AngleBracketRight from '../../assets/AngleBracketRight'
 import imageForCarousel from '../../Components/LoginOptions/imageForCarousel.png'
 import {useNavigate} from 'react-router-dom'
-function LoginOptions({setLoginStatus,favLogin,setfavLogin}) {
+function LoginOptions({setLoginStatus,favLogin,setfavLogin,setComingFromFailedOperation}) {
   
   const nav=useNavigate()
   const [slider, setslider] = useState("")
@@ -44,8 +44,9 @@ useEffect(() => {
   if (NoOfTimesIntoUseEffect==1){
     indicator[0].style.backgroundColor='#23e5db'
     if(favLogin!=false){
-      slideTo(favLogin)
-      setfavLogin(false)
+      slideTo(favLogin);
+      setfavLogin(false);
+      
     }
   }
   setNoOfTimesIntoUseEffect(1)
@@ -65,9 +66,7 @@ useEffect(() => {
         <div className='lo_sliderDisplay'>
           <div className='lo_sliderButtonLeft' onClick={()=>{handleN(-1)}} ><AngleBracketLeft/></div>
           <div className='lo_sliderButtonRight'  onClick={()=>{handleN(1)}}><AngleBracketRight/></div>
-          {/* <div id='first'></div>
-          <div id='second'></div>
-          <div id='third'></div> */}
+  
           
           <div id='idSlider' className='lo_slider'>
             <div><img src="https://statics.olx.in/external/base/img/loginEntryPointPost.png" alt="Image" />
