@@ -95,6 +95,12 @@
 }
 .card .content .name {
   font-size: small;
+  
+}
+.card .content .name{
+  white-space: pre-wrap;
+  overflow: hidden;
+  height: 25px;
 }
 .card .date {
   display: flex;

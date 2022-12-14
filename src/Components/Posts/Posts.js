@@ -64,7 +64,7 @@ function Posts({setLoginStatus,setfavLogin}) {
           {AllSellPostings.map((x) =>
             <div className="card">
               <div  className="ps_favorite" onClick={() => { addToFav(x) }}>
-              {LogedUser.name?x.AddedToFav?<HeartActive/>:<Heart/>:<Heart/>}
+              {LogedUser.name?x.uidsFvrtdUsrs.filter((y)=>y==LogedUser.uid).length>0?<HeartActive/>:<Heart/>:<Heart/>}
               </div>
               <div onClick={() => { navToViewPost(x) }}>
                 <div className="image">

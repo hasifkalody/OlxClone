@@ -17,12 +17,11 @@ const Create = () => {
   const NoOfVisitsobj = useContext(NoOfVisitsContext)
   const setNoOfVisits= NoOfVisitsobj.setNoOfVisits
   // const [uid, setuid] = useState(LogedUser.uid);
-  const Handleupload=async()=>{
-    await upload(image, Name, Category, Price,uid);
-    nav('/');
-    setTimeout(() => {
-      setNoOfVisits((prev)=>prev+1)
-    }, 2000);
+  const Handleupload=()=>{
+     upload(image, Name, Category, Price,uid,nav);
+    // setTimeout(() => {
+    //   setNoOfVisits((prev)=>prev+1)
+    // }, 2000);
   }
   return (
     <Fragment>

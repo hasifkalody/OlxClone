@@ -1,5 +1,5 @@
 
-import {query, getDocs, collection,where,doc, updateDoc} from "firebase/firestore";
+import {query, getDocs, collection,where,doc, updateDoc,arrayUnion,arrayRemove} from "firebase/firestore";
 // import {getStorage, ref, uploadBytes, getDownloadURL,} from 'firebase/storage';
 import { db } from '../Firebase/Auth'
 
@@ -47,9 +47,9 @@ const NoOfVisits=({children})=>{
  const addToFav = async (obj,LogedUser,update, setUpdate,setfavLogin,setLoginStatus,setCmngFrmFldOprtn) => {
   let favExists = []
     if(LogedUser.name){
-      // back
+      
       const colref = collection(db, "SellPostings")
-      const q = query(colref, where("uidOfAddedUser", "==", LogedUser.uid), where("id", "==", obj.id))
+      const q = query(colref, where("id", "==", obj.id), where("uidsFvrtdUsrs","array-contains", LogedUser.uid))
       const data = await getDocs(q)
       favExists=[]
       data.forEach((obj) => {
@@ -59,13 +59,13 @@ const NoOfVisits=({children})=>{
       if (favExists[0]) {
         
         console.log("already favouritd")
-        await updateDoc(doc(db,"SellPostings",obj.id),{uidOfAddedUser:null,AddedToFav : false})
+        await updateDoc(doc(db,"SellPostings",obj.id),{uidsFvrtdUsrs: arrayRemove(LogedUser.uid)})
         // document.getElementById(ind).firstChild.remove()
       }
       else {
        
         console.log("atelse")
-        await updateDoc(doc(db,"SellPostings",obj.id),{uidOfAddedUser:LogedUser.uid,AddedToFav : true})
+        await updateDoc(doc(db,"SellPostings",obj.id),{uidsFvrtdUsrs: arrayUnion(LogedUser.uid)})
         // document.getElementById(obj.id).style.backgroundColor="black"
       }
       setUpdate(update+1)

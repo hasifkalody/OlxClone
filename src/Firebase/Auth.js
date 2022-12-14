@@ -80,19 +80,20 @@ const logout = () => {
 };
 
 // ======================store=================================
-const upload = (image, Name, Category, Price,uid) => {
+const upload = (image, Name, Category, Price,uid,nav) => {
 
   const storageRef = ref(storage, `sellPostings/${image.name}`);
   uploadBytes(storageRef, image).then((snapshot) => {
     getDownloadURL(ref(storage, `sellPostings/${image.name}`))
     .then(async(url) => {
       const date=FetchDate(new Date())
-      const SellingItemData = { Name, Category, Price, imageURL: url,date,uid }
+      const SellingItemData = { Name, Category, Price, imageURL: url,date,uid,uidsFvrtdUsrs:[]}
       const Addeddoc=await addDoc(collection(db, "SellPostings"), SellingItemData);
       // const document=await getDoc(doc(db, "SellPostings",Addeddoc.id));
       // console.log(document.exists())
       // console.log(document.data())
-      await updateDoc(doc(db, "SellPostings",Addeddoc.id),{id:Addeddoc.id})
+      await updateDoc(doc(db, "SellPostings",Addeddoc.id),{id:Addeddoc.id});
+      // nav('/')
     })
     .catch((error) => {
       console.log(error)
