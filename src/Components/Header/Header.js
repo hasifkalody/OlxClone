@@ -58,8 +58,8 @@ function Header({setLoginStatus,setShowDropDown}) {
    <div className='headerTop'>
      <div className="headerParentDiv">
       <div className="headerChildDiv">
-        <div className="brandName">
-          <OlxLogo></OlxLogo>
+        <div className="brandName" onClick={()=>{nav('/')}}>
+          <OlxLogo ></OlxLogo>
         </div>
         <div className="placeSearch">
           <Search></Search>

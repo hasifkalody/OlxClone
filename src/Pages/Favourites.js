@@ -5,6 +5,7 @@ import Header from '../Components/Header/Header'
 import {cntxtCmngFrmFldOprtn} from '../Helpers/Helpers'
 import ProfileDropDown from '../Components/ProfileDropDown/ProfileDropDown'
 import LoginOptions from '../Components/LoginOptions/LoginOptions'
+import Options from '../Components/Options/Options'
 
 function Favourites() {
   const {ShowDropDown, setShowDropDown,DontShowLogin, setLoginStatus,favLogin, setfavLogin}= useContext(cntxtCmngFrmFldOprtn)
@@ -14,6 +15,7 @@ function Favourites() {
       {ShowDropDown && <ProfileDropDown setShowDropDown={setShowDropDown} />}
       {DontShowLogin ? "" : <LoginOptions setLoginStatus={setLoginStatus} favLogin={favLogin} setfavLogin={setfavLogin} />}
       <Header setShowDropDown={setShowDropDown} setLoginStatus={setLoginStatus}/> 
+      <Options/>
       <FavItems/>
       <Footer/>
     </div>

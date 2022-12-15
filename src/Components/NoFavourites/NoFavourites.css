@@ -1,24 +1,4 @@
-.mA_Ads{
-    min-height: 75vh;
-    font-family: Roboto,Arial,Helvetica,sans-serif;
-}
-.mA_Container{
-    padding-top: 74px;
-}
-.mA_Ads button{
-    width: 110px;
-    height: 50px;
-    background-color: white;
-    border: none;
-    color: #002f34;
-    border-bottom: 1px solid #dbdbdb;
-    margin-top: 12px;
-    font-size: 16px;
-}
-.mA_Ads  button:nth-child(1){
-    width: 60px;
-    margin-left: 40px;
-}
+
 .mA_Postings{
     min-height: 67vh;
     display: flex;
