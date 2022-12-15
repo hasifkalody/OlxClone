@@ -44,7 +44,7 @@ const NoOfVisits=({children})=>{
 
 
 
- const addToFav = async (obj,LogedUser,update, setUpdate,setfavLogin,setLoginStatus,setCmngFrmFldOprtn) => {
+ const addToFav = async (obj,LogedUser,setUpdate,setfavLogin,setLoginStatus,setCmngFrmFldOprtn) => {
   let favExists = []
     if(LogedUser.name){
       
@@ -68,7 +68,7 @@ const NoOfVisits=({children})=>{
         await updateDoc(doc(db,"SellPostings",obj.id),{uidsFvrtdUsrs: arrayUnion(LogedUser.uid)})
         // document.getElementById(obj.id).style.backgroundColor="black"
       }
-      setUpdate(update+1)
+      setUpdate((state)=>state+1)
     }
     else{
       setfavLogin(3)
@@ -80,8 +80,14 @@ const NoOfVisits=({children})=>{
 
   const FrmFldOprtn=({children})=>{
     const [CmngFrmFldOprtn, setCmngFrmFldOprtn] = useState({})
+    const [favLogin, setfavLogin] = useState(false)
+    const [DontShowLogin, setLoginStatus] = useState(true)
+    const [update, setUpdate] = useState(0)
+    const [ShowDropDown, setShowDropDown] = useState(false)
+
+
   return(
-    <cntxtCmngFrmFldOprtn.Provider value={{CmngFrmFldOprtn,setCmngFrmFldOprtn}}>
+    <cntxtCmngFrmFldOprtn.Provider value={{CmngFrmFldOprtn,setCmngFrmFldOprtn,favLogin, setfavLogin,DontShowLogin, setLoginStatus,update, setUpdate,ShowDropDown, setShowDropDown}}>
       {children}
     </cntxtCmngFrmFldOprtn.Provider>
   )

@@ -11,19 +11,17 @@ import { Contextuser } from '../App';
 import { db } from '../Firebase/Auth';
 
 function Home() {
-  const [DontShowLogin, setLoginStatus] = useState(true)
-  const [ShowDropDown, setShowDropDown] = useState(false)
-  const [favLogin, setfavLogin] = useState(false)
+  const {ShowDropDown, setShowDropDown,DontShowLogin, setLoginStatus,favLogin, setfavLogin}= useContext(cntxtCmngFrmFldOprtn)
+
 
   return (
     <div className="homeParentDiv">
       {ShowDropDown && <ProfileDropDown setShowDropDown={setShowDropDown} />}
       {DontShowLogin ? "" : <LoginOptions setLoginStatus={setLoginStatus} favLogin={favLogin} setfavLogin={setfavLogin} />}
       <Header setLoginStatus={setLoginStatus} setShowDropDown={setShowDropDown} />
-      <Banner />
-      <Posts setLoginStatus={setLoginStatus} setfavLogin={setfavLogin}
-      />
-      <Footer />
+      <Banner/>
+      <Posts/>
+      <Footer/>
     </div>
   );
 }

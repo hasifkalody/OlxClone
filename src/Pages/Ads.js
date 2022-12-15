@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Footer from '../Components/Footer/Footer'
 import Header from '../Components/Header/Header'
 import ProfileDropDown from '../Components/ProfileDropDown/ProfileDropDown'
@@ -6,11 +6,11 @@ import LoginOptions from '../Components/LoginOptions/LoginOptions'
 import Options from '../Components/Options/Options'
 import MyAds from '../Components/MyAds/MyAds'
 import '../Components/MyAds/MyAds.css'
+import {cntxtCmngFrmFldOprtn} from '../Helpers/Helpers'
 
 function Ads() {
-    const [DontShowLogin, setLoginStatus] = useState(true)
-    const [ShowDropDown, setShowDropDown] = useState(false)
-    const [favLogin, setfavLogin] = useState(false)
+  const {ShowDropDown, setShowDropDown,DontShowLogin, setLoginStatus,favLogin, setfavLogin}= useContext(cntxtCmngFrmFldOprtn)
+
 
   return (
     <div className='mA_Container'>

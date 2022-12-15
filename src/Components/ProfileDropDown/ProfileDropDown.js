@@ -45,7 +45,7 @@ function ProfileDropDown({setShowDropDown}) {
          <p>We are built on trust. Help one another to get to know each other better.</p>
         </div>
         <div className='pd_thirdEl'>
-            <div className='pd_thirdElContents' onClick={()=>nav('/MyAds')}>
+            <div className='pd_thirdElContents' onClick={()=>{nav('/MyAds');setShowDropDown((state)=>!state)}}>
                 <div><P1/></div>
                 <div><p>My ADS</p></div>
             </div>

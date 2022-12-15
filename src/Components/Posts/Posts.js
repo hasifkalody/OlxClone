@@ -11,9 +11,9 @@ import {addToFav as favfn} from '../../Helpers/Helpers'
 import {cntxtCmngFrmFldOprtn} from '../../Helpers/Helpers'
 
 
-function Posts({setLoginStatus,setfavLogin}) {
+function Posts() {
   const NoOfVisitsObj = useContext(NoOfVisitsContext)
-  const {CmngFrmFldOprtn,setCmngFrmFldOprtn} = useContext(cntxtCmngFrmFldOprtn)
+  const {CmngFrmFldOprtn,setCmngFrmFldOprtn,setLoginStatus,setfavLogin,update, setUpdate} = useContext(cntxtCmngFrmFldOprtn)
   const arr = []
   const obj = useContext(contextForPostedItem)
   const [AllSellPostings, Set] = useState([])
@@ -24,10 +24,9 @@ function Posts({setLoginStatus,setfavLogin}) {
   }
   const NoOfVisits = NoOfVisitsObj.NoOfVisits
   const LogedUser = useContext(Contextuser);
-  const [update, setUpdate] = useState(0)
   
   const addToFav=(obj)=>{
-    favfn(obj,LogedUser,update, setUpdate,setfavLogin,setLoginStatus,setCmngFrmFldOprtn)
+    favfn(obj,LogedUser,setUpdate,setfavLogin,setLoginStatus,setCmngFrmFldOprtn)
   }
 
 

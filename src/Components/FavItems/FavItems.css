@@ -10,7 +10,7 @@
     
   }
   .fav_first{
-    height: 80vh;
+    min-height: 80vh;
   }
   .Fav_Container{
     padding-top: 100px;

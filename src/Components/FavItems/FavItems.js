@@ -5,18 +5,24 @@ import './FavItems.css';
 import { Contextuser } from '../../App';
 import {addToFav} from '../../Helpers/Helpers'
 import { useNavigate } from 'react-router-dom';
-import { contextForPostedItem} from '../../Helpers/Helpers'
+import { cntxtCmngFrmFldOprtn} from '../../Helpers/Helpers'
 import HeartActive from '../../assets/HeartActive'
+import {addToFav as fav} from '../../Helpers/Helpers'
 
 function FavItems() {
-    const obj = useContext(contextForPostedItem)
+    const obj = useContext(cntxtCmngFrmFldOprtn)
+    const {setCmngFrmFldOprtn,setfavLogin,setLoginStatus,update, setUpdate} = useContext(cntxtCmngFrmFldOprtn)
     const nav=useNavigate()
     const Logeduser = useContext(Contextuser)
     const [items, setitems] = useState([])
     const navToViewPost = (item) => {
         obj.setPostedItem(item)
-        nav('/ViewPosts')
-      }
+        nav('/ViewPosts')}
+
+   const addToFav=(obj)=>{
+   fav(obj,Logeduser, setUpdate,setfavLogin,setLoginStatus,setCmngFrmFldOprtn)
+}
+         
 useEffect(async() => {
    if(Logeduser.uid){
     const q=query(collection(db,"SellPostings"),where("uidsFvrtdUsrs","array-contains",Logeduser.uid))
@@ -27,7 +33,7 @@ useEffect(async() => {
     })
     setitems(arr)
    }
-}, [Logeduser])
+}, [Logeduser,update])
   return (
     <div className='fav_first'>
       <div className="cards" >
