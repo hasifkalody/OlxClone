@@ -1,11 +1,15 @@
 .headerParentDiv {
-  padding: 10px;
+  padding: 10px 40px;
   background-color: whitesmoke;
+}
+.headerTop{
   position: fixed;
+  top: 0;
   width: 100vw;
+  padding-bottom: 4px;
+  border-bottom: 4px solid whitesmoke;
   z-index: 999;
 }
-
 .headerChildDiv {
   width: 100%;
   display: flex;

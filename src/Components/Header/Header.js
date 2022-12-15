@@ -55,7 +55,8 @@ function Header({setLoginStatus,setShowDropDown}) {
 
 
   return (
-    <div className="headerParentDiv">
+   <div className='headerTop'>
+     <div className="headerParentDiv">
       <div className="headerChildDiv">
         <div className="brandName">
           <OlxLogo></OlxLogo>
@@ -95,6 +96,7 @@ function Header({setLoginStatus,setShowDropDown}) {
         </div>
       </div>
     </div>
+   </div>
   );
 }
 

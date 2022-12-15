@@ -19,6 +19,8 @@ import ViewPost from './Pages/ViewPost'
 import { auth, db} from "./Firebase/Auth";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import{onAuthStateChanged} from 'firebase/auth';
+import Ads from './Pages/Ads';
+import Favourites from './Pages/Favourites';
 export const Contextuser=createContext()
 // ----------------------to be moved to deperate file-----
 
@@ -62,6 +64,12 @@ function App() {
               </Route>
               <Route path='/ViewPosts'>
                 <ViewPost/>
+              </Route>
+              <Route path='/MyAds'>
+                <Ads/>
+              </Route>
+              <Route path='/Favourites'>
+                <Favourites/>
               </Route>
             </Routes>
           </Router>

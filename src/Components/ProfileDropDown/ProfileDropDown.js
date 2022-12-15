@@ -8,8 +8,10 @@ import P5 from '../../assets/ProfileDropDown/P5'
 import P6 from '../../assets/ProfileDropDown/P6'
 import P7 from '../../assets/ProfileDropDown/P7'
 import {logout} from "../../Firebase/Auth";
+import { useNavigate } from 'react-router-dom'
 
 function ProfileDropDown({setShowDropDown}) {
+  const nav=useNavigate()  
   const handleLogout=()=>{
       logout();
       setShowDropDown((state)=>!state)
@@ -43,7 +45,7 @@ function ProfileDropDown({setShowDropDown}) {
          <p>We are built on trust. Help one another to get to know each other better.</p>
         </div>
         <div className='pd_thirdEl'>
-            <div className='pd_thirdElContents'>
+            <div className='pd_thirdElContents' onClick={()=>nav('/MyAds')}>
                 <div><P1/></div>
                 <div><p>My ADS</p></div>
             </div>

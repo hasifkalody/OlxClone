@@ -6,7 +6,7 @@ import AngleBracketLeft from '../../assets/AngleBracketLeft'
 import AngleBracketRight from '../../assets/AngleBracketRight'
 import imageForCarousel from '../../Components/LoginOptions/imageForCarousel.png'
 import {useNavigate} from 'react-router-dom'
-function LoginOptions({setLoginStatus,favLogin,setfavLogin,setComingFromFailedOperation}) {
+function LoginOptions({setLoginStatus,favLogin,setfavLogin}) {
   
   const nav=useNavigate()
   const [slider, setslider] = useState("")

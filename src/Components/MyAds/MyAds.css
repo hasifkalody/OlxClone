@@ -1,0 +1,65 @@
+.mA_Ads{
+    height: 75vh;
+    font-family: Roboto,Arial,Helvetica,sans-serif;
+}
+.mA_Container{
+    padding-top: 74px;
+}
+.mA_Container button{
+    width: 110px;
+    height: 50px;
+    background-color: white;
+    border: none;
+    color: #002f34;
+    border-bottom: 1px solid #dbdbdb;
+    margin-top: 12px;
+    font-size: 16px;
+}
+.mA_Container button:nth-child(1){
+    width: 60px;
+    margin-left: 40px;
+}
+.mA_Postings{
+    height: 67vh;
+    display: flex;
+    justify-content: center;
+  
+}
+.mA_Cntnts p:nth-child(2){
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 100;
+    color: rgba(0,47,52,.64);
+    font-weight: 700;
+    margin-top: 15px;
+}
+.mA_Cntnts p:nth-child(3){
+    font-size: 18px;
+    line-height: 24px;
+    width: 60%;
+    color: rgba(0,47,52,.36);
+    margin-top: 15px;
+    width: 150px;
+    text-align: center;
+}
+.mA_Cntnts button{
+    color: #002f34;
+    border-radius: 4px;
+    border: 3px solid #002f34;
+    width: 120px;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: white;
+    padding: 5px ;
+    font-family: Roboto,Arial,Helvetica,sans-serif;
+   
+}
+.mA_Cntnts{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 300px;
+ }
+ .mA_Cntnts :nth-child(1){
+    width: 220px;
+ }
