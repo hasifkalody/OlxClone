@@ -9,6 +9,8 @@ import { cntxtCmngFrmFldOprtn } from '../Helpers/Helpers';
 import { doc, updateDoc } from 'firebase/firestore';
 import { Contextuser } from '../App';
 import { db } from '../Firebase/Auth';
+import Options from '../Components/Options/Options';
+import '../Pages/stylesForPages.css'
 
 function Home() {
   const {ShowDropDown, setShowDropDown,DontShowLogin, setLoginStatus,favLogin, setfavLogin}= useContext(cntxtCmngFrmFldOprtn)
@@ -19,6 +21,7 @@ function Home() {
       {ShowDropDown && <ProfileDropDown setShowDropDown={setShowDropDown} />}
       {DontShowLogin ? "" : <LoginOptions setLoginStatus={setLoginStatus} favLogin={favLogin} setfavLogin={setfavLogin} />}
       <Header setLoginStatus={setLoginStatus} setShowDropDown={setShowDropDown} />
+      <Options/>
       <Banner/>
       <Posts/>
       <Footer/>

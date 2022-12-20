@@ -6,7 +6,7 @@
     color: #002f34;
     background-color: white;
     border-bottom: 5px solid rgba(0,47,52,.03);
-  
+    cursor: pointer;
   }
 
   .op_menuBar .categoryMenu span {
@@ -15,12 +15,18 @@
   }
   .op_menuBar .otherQuickOptions span {
     padding: 10px;
+    font-weight: 500;
+   
   }
-  .banner {
+  .op_menuBar .otherQuickOptions span:hover{
+    color: #00a49f;
+  
+  }
+  /* .banner {
     position: relative;
     width: 100vw;
   }
-  
+   */
   @media only screen and (max-width: 700px) {
     .otherQuickOptions {
       display: none;

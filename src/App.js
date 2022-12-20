@@ -21,6 +21,9 @@ import { query, collection, getDocs, where } from "firebase/firestore";
 import{onAuthStateChanged} from 'firebase/auth';
 import Ads from './Pages/Ads';
 import Favourites from './Pages/Favourites';
+import Categories from './Components/Categories/Categories';
+import Cars from './Pages/Cars';
+import Bikes from './Pages/Bikes';
 export const Contextuser=createContext()
 // ----------------------to be moved to deperate file-----
 
@@ -70,6 +73,12 @@ function App() {
               </Route>
               <Route path='/Favourites'>
                 <Favourites/>
+              </Route>
+              <Route path='/Cars'>
+                <Cars/>
+              </Route>
+              <Route path='/Bikes'>
+                <Bikes/>
               </Route>
             </Routes>
           </Router>

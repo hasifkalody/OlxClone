@@ -45,6 +45,7 @@
 }
 .moreView .cards::-webkit-scrollbar-track {
   background: #f1f1f1; 
+ 
 }
 .moreView .cards::-webkit-scrollbar-thumb {
   background: #002f34 ;
@@ -52,7 +53,7 @@
 }
 
 .card {
-  scroll-snap-align: end;
+  scroll-snap-align: center;
   margin-right: 15px;
   padding: 13px;
   max-width: 222px;

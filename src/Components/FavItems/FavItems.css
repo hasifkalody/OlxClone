@@ -78,7 +78,7 @@
   }
   
   .card {
-    scroll-snap-align: end;
+    scroll-snap-align: center;
     margin-right: 15px;
     padding: 13px;
     max-width: 222px;

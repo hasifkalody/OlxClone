@@ -93,5 +93,15 @@ const NoOfVisits=({children})=>{
   )
 
   }
+  const FetchCateories= async (Category)=>{
+    const q=query(collection(db,"SellPostings"),where("Category","in",Category))
+    const data=await getDocs(q)
+    const arr=[]
+    data.forEach((x)=>{
+      arr.push(x.data())
+    })
+    
+    return arr
+  }
 
-export {FetchDate,PostedItemContext,contextForPostedItem,NoOfVisitsContext,NoOfVisits,addToFav, FrmFldOprtn,cntxtCmngFrmFldOprtn}
+export {FetchDate,PostedItemContext,contextForPostedItem,NoOfVisitsContext,NoOfVisits,addToFav, FrmFldOprtn,cntxtCmngFrmFldOprtn,FetchCateories}
