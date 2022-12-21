@@ -1,9 +1,7 @@
 .mA_Ads{
     min-height: 75vh;
+    padding:0 40px;
     font-family: Roboto,Arial,Helvetica,sans-serif;
-}
-.mA_Container{
-    padding-top: 74px;
 }
 .mA_Ads button{
     width: 110px;

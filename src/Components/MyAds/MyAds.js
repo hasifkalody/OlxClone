@@ -7,6 +7,7 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import { Contextuser } from '../../App';
 import { db } from '../../Firebase/Auth'
 import {contextForPostedItem,cntxtCmngFrmFldOprtn} from '../../Helpers/Helpers'
+import MyAdsCard from '../MyAdsCard/MyAdsCard'
 
 function MyAds() {
   const {update} = useContext(cntxtCmngFrmFldOprtn)
@@ -36,7 +37,10 @@ useEffect(async() => {
         <div className='mA_Ads'>
                 <button onClick={() => { nav('/MyAds') }}>ADS</button>
                 <button onClick={() => { nav('/Favourites') }}>FAVOURITES</button>
-                {items.length>0? <div className='fav_first'>
+                {items.length>0? <MyAdsCard Items={items}/>:<NoPostings/>}
+
+
+                {/* {items.length>0? <div className='fav_first'>
                     <div className="cards" >
                         {items.map((x) =>
                             <div className="card">
@@ -62,7 +66,7 @@ useEffect(async() => {
 
 
                     </div>
-                </div>:<NoPostings/>}
+                </div>:<NoPostings/>} */}
                
             </div>
     </div>

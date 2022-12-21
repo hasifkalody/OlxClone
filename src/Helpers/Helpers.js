@@ -100,7 +100,6 @@ const NoOfVisits=({children})=>{
     data.forEach((x)=>{
       arr.push(x.data())
     })
-    
     return arr
   }
 

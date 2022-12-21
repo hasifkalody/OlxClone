@@ -21,10 +21,8 @@ function Categories({ Category}) {
     const {CmngFrmFldOprtn,setCmngFrmFldOprtn,setLoginStatus,setfavLogin,update, setUpdate} = useContext(cntxtCmngFrmFldOprtn)
     const favrt=(obj)=>{fav(obj,LogedUser,setUpdate,setfavLogin,setLoginStatus,setCmngFrmFldOprtn)}
     
-    useEffect(async() => {
-        const vv=await FetchCateories(Category)
-    
-        setCars(vv)
+    useEffect(() => {
+        FetchCateories(Category).then((obj)=>{setCars(obj)})   
     }, [])
     return (
         <div className='ca_container'>
