@@ -9,7 +9,7 @@ function Options() {
   return (
     
       <div className="op_menuBar">
-          <div className="categoryMenu">
+          <div className="categoryMenu" onClick={()=>{nav('/')}}>
             <span>ALL CATEGORIES</span>
             <Arrow></Arrow> 
           </div>

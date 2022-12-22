@@ -9,7 +9,9 @@ import { db } from '../../Firebase/Auth'
 import {contextForPostedItem,cntxtCmngFrmFldOprtn} from '../../Helpers/Helpers'
 import MyAdsCard from '../MyAdsCard/MyAdsCard'
 function MyAds() {
-    const {deleted} = useContext(contextForPostedItem)
+    const [deleted, setdeleted] = useState(0)
+    const callBack=()=>{
+        setdeleted(deleted+1)}
   const {update} = useContext(cntxtCmngFrmFldOprtn)
   const Logeduser = useContext(Contextuser)
   const [items, setitems] = useState([])
@@ -37,7 +39,7 @@ useEffect(async() => {
         <div className='mA_Ads'>
                 <button onClick={() => { nav('/MyAds') }}>ADS</button>
                 <button onClick={() => { nav('/Favourites') }}>FAVOURITES</button>
-                {items.length>0? <MyAdsCard Items={items}/>:<NoPostings/>}
+                {items.length>0? <MyAdsCard Items={items} callBack={callBack}/>:<NoPostings/>}
 
 
                 {/* {items.length>0? <div className='fav_first'>

@@ -103,11 +103,10 @@ const NoOfVisits=({children})=>{
     })
     return arr
   }
-const deleteDocument=async(id,setdeleted)=>{
-  console.log(id)
+const deleteDocument=async(id,f)=>{
  const deleted=await deleteDoc(doc(db,"SellPostings",id))
  console.log("deletion success")
- setdeleted((p)=>p+1)
-//  settest()
+ f()
+//  setdeleted((p)=>p+1)
 }
 export {FetchDate,PostedItemContext,contextForPostedItem,NoOfVisitsContext,NoOfVisits,addToFav, FrmFldOprtn,cntxtCmngFrmFldOprtn,FetchCateories,deleteDocument}
