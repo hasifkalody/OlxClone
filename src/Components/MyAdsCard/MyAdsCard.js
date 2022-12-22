@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState} from 'react'
 import Heart from '../../assets/Heart'
 import HeartActive from '../../assets/HeartActive'
 import Eye from '../../assets/MyAdsPage/Eye'
@@ -8,14 +8,8 @@ function MyAdsCard({Items}) {
     const fn=()=>{console.log("at fn");console.log(showDrpDwn);
         if(showDrpDwn!="empty"){document.getElementById(showDrpDwn).style.display="none";console.log("body")}}
     
-        useEffect(() => {
-            document.addEventListener("click", fn);
-            // return () => {
-            //     document.body.removeEventListener('click',fn);
-            // };
-        }, [])
   return (
-   <div className='AdCrd_body'>
+   <div className='AdCrd_body' onClick={fn}>
      {Items.map((x,ind)=>< div className='AdCrd_Container' >
         <div className='AdCrd_left'>
             <div><span>From:<b>Dec 20, 22</b></span></div>
