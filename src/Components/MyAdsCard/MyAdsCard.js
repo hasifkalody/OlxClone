@@ -1,13 +1,16 @@
-import React, { useState} from 'react'
+import React, { useContext, useEffect, useState} from 'react'
 import Heart from '../../assets/Heart'
 import HeartActive from '../../assets/HeartActive'
 import Eye from '../../assets/MyAdsPage/Eye'
 import './MyAdsCard.css'
-function MyAdsCard({Items}) {
+import {deleteDocument} from '../../Helpers/Helpers'
+import {contextForPostedItem}from '../../Helpers/Helpers'
+function MyAdsCard({Items,test}) {
+    const {setdeleted} = useContext(contextForPostedItem)
+
     const [showDrpDwn, setshowDrpDwn] = useState("empty")
     const fn=()=>{console.log("at fn");console.log(showDrpDwn);
         if(showDrpDwn!="empty"){document.getElementById(showDrpDwn).style.display="none";console.log("body")}}
-    
   return (
    <div className='AdCrd_body' onClick={fn}>
      {Items.map((x,ind)=>< div className='AdCrd_Container' >
@@ -43,7 +46,10 @@ function MyAdsCard({Items}) {
                   
                <div id={ind}  className='AdCrd_5thdrpdwn ' >
                     <div><button id='AdCrd_5thdrpdwnBtn1'>Edit</button></div>
-                    <div><button id='AdCrd_5thdrpdwnBtn2'>Remove</button></div>
+                    <div><button id='AdCrd_5thdrpdwnBtn2' onClick={()=>{
+                        
+                        let c=window.confirm("Are You Sure To Delete! \nOnce deleted, can't be restored")
+                        if(c==true){deleteDocument(x.id,setdeleted)};}}>Remove</button></div>
                 </div>
                    <div className='AdCrd_5thInner'>
                     <span></span>

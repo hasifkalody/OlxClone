@@ -8,8 +8,8 @@ import { Contextuser } from '../../App';
 import { db } from '../../Firebase/Auth'
 import {contextForPostedItem,cntxtCmngFrmFldOprtn} from '../../Helpers/Helpers'
 import MyAdsCard from '../MyAdsCard/MyAdsCard'
-
 function MyAds() {
+    const {deleted} = useContext(contextForPostedItem)
   const {update} = useContext(cntxtCmngFrmFldOprtn)
   const Logeduser = useContext(Contextuser)
   const [items, setitems] = useState([])
@@ -30,7 +30,7 @@ useEffect(async() => {
     })
     setitems(arr)
 }
-}, [Logeduser, update])
+}, [Logeduser, update,deleted])
 
   return (
     <div>

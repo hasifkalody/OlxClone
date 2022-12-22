@@ -1,5 +1,5 @@
 
-import {query, getDocs, collection,where,doc, updateDoc,arrayUnion,arrayRemove} from "firebase/firestore";
+import {query, getDocs, collection,where,doc, updateDoc,arrayUnion,arrayRemove, deleteDoc} from "firebase/firestore";
 // import {getStorage, ref, uploadBytes, getDownloadURL,} from 'firebase/storage';
 import { db } from '../Firebase/Auth'
 
@@ -22,8 +22,9 @@ const FetchDate=Date=>{
 
 const PostedItemContext=({children})=>{
     const [PostedItem, setPostedItem] = useState({})
+    const [deleted, setdeleted] = useState('')
     return(
-        <contextForPostedItem.Provider value={{PostedItem, setPostedItem}}>
+        <contextForPostedItem.Provider value={{PostedItem, setPostedItem,deleted,setdeleted}}>
         {children}
         </contextForPostedItem.Provider>
     )
@@ -102,5 +103,11 @@ const NoOfVisits=({children})=>{
     })
     return arr
   }
-
-export {FetchDate,PostedItemContext,contextForPostedItem,NoOfVisitsContext,NoOfVisits,addToFav, FrmFldOprtn,cntxtCmngFrmFldOprtn,FetchCateories}
+const deleteDocument=async(id,setdeleted)=>{
+  console.log(id)
+ const deleted=await deleteDoc(doc(db,"SellPostings",id))
+ console.log("deletion success")
+ setdeleted((p)=>p+1)
+//  settest()
+}
+export {FetchDate,PostedItemContext,contextForPostedItem,NoOfVisitsContext,NoOfVisits,addToFav, FrmFldOprtn,cntxtCmngFrmFldOprtn,FetchCateories,deleteDocument}
