@@ -1,21 +1,35 @@
-.footerParentDiv {
+.he_footerParentDiv {
   width: 100vw;
-  
 }
-.footerParentDiv .content {
+.he_content {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background: #ebeeef;
-  /* padding: 16px; */
-  padding: 10px 80px;
+  background: rgba(0,0,0,.04);
+  padding: 15px 80px 0;
+  
 }
-.footerParentDiv .content .heading {
-  font-size: 24px;
+.he_list{
+  
+  margin:0;
+}
+.he_footerParentDiv .he_content ul{
+    list-style: none;
+    padding: 0;
+    font-weight: 400;
+    text-transform: none;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: rgba(0,47,52,.64);
+}
+.he_footerParentDiv .he_content .he_heading p {
+  font-size: 14px;
+  color: #002f34;;
   font-weight: bolder;
+  text-transform: uppercase;
 }
 
-.footerParentDiv .footer {
+.he_footerParentDiv .footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,6 +39,152 @@
   padding: 10px 80px;
 }
 
-.footerParentDiv .footer p {
+.he_footerParentDiv .footer p {
   margin: 0;
 }
+
+.he_list ul {
+  transform: translateY(-5px); 
+}
+.he_social span{
+ display: inline-block;
+ margin-right: 10px;
+}
+.he_social svg{
+  opacity: 1;
+  fill: rgba(0,47,52,.64);;
+}
+.fo_app{
+  display: flex;
+  gap: 10px;
+}
+.fo_app div{
+  margin-top: 50px;
+}
+.fo_footer{
+  color: #fff;
+  font-size: 12px;
+  line-height: 18px;
+  background: #002f34;
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-between; 
+  padding: 15px 80px 0;
+}
+.fo_footer p span{
+  font-weight: 700;
+}
+.fo_mob{
+  display: none;
+  box-sizing: border-box;
+  width: 100vw;
+  user-select: none;
+}
+.fo_mobEl{
+    width:100%;
+    border-top: 1px solid rgba(14,4,5,.2);
+    background-color: white;
+}
+.fo_mobEl .fo_mobElDrpDwnFst{
+  background-color: white;
+}
+.fo_arrow{
+  width: 15px;
+  height: 15px;
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+  transform: rotate(135deg);
+}
+.fo_mobElDrpDwn{
+  background-color: #ebeeef;;
+  width: 100%;
+  display: none;
+}
+.fo_mobElDrpDwn div{ 
+  padding: 10px 15px;
+
+}
+.fo_mobFrstEl{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px 15px;
+}
+.fo_MobScl{
+  display: flex;
+  gap: 2px;
+  justify-content: center;
+  align-items: center;
+}
+.fo_MobScl svg{
+  fill: #002f34;;
+}
+.Forotate{
+  transform: rotate(-45deg);
+}
+.fo_showDrpdwn{
+  display: block;
+}
+/* ----------sellIcon ----------*/
+
+.fo_sellMenu{
+  position: relative;
+  cursor: pointer;
+}
+
+.fo_sellMenu .all {
+  fill: white;
+}
+
+.fo_sellMenu .top {
+  fill: #23e5db;
+}
+
+.fo_sellMenu.left {
+  fill: #ffce32;
+}
+
+.fo_sellMenu.right {
+  fill: #3a77ff;
+}
+.fo_sellMenu.fo_sellMenuContent{
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #002f34;
+}
+.fo_sellMenu .fo_sellMenuContent span {
+  margin-left: 5px;
+}
+
+
+@media(max-width:800px){
+  .fo_footer :nth-child(1){
+    display: none;
+  }
+  .fo_footer{
+    align-items: center;
+    justify-content: center;
+  }
+  .fo_mob{
+    display: block;
+  }
+  .he_content{
+    display: none;
+  }
+  .fo_app div{
+    margin: 0;
+  }
+  .fo_mobElRspsv{
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+  }
+}
+

@@ -1,0 +1,39 @@
+.mobctgrs_container{
+    width: 100vw;
+    display: none;
+}
+.mobctgrs_top{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px; 
+}
+.mobctgrs_top :nth-child(2) span{
+    border-bottom: 2px solid #212529; 
+}
+.mobctgrs_slider{
+    display: flex;
+    gap: 35px;
+    overflow: scroll;
+}
+.mobctgrs_card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    height: 120px;
+    flex-shrink: 0;
+    padding: 20px 0;
+}
+.mobctgrs_card :nth-child(2) p{
+    margin: 0;
+    text-align: center;
+}
+.mobctgrs_cardmg img{
+    width: 40px;
+}
+@media(max-width:800px){
+    .mobctgrs_container{
+        display: block;
+    }
+}

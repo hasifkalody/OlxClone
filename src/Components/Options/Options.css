@@ -7,6 +7,7 @@
     background-color: white;
     border-bottom: 5px solid rgba(0,47,52,.03);
     cursor: pointer;
+    
   }
 
   .op_menuBar .categoryMenu span {
@@ -27,8 +28,8 @@
     width: 100vw;
   }
    */
-  @media only screen and (max-width: 700px) {
-    .otherQuickOptions {
+  @media only screen and (max-width: 800px) {
+    .op_menuBar {
       display: none;
     }
   }

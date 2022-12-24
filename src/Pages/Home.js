@@ -11,6 +11,7 @@ import { Contextuser } from '../App';
 import { db } from '../Firebase/Auth';
 import Options from '../Components/Options/Options';
 import '../Pages/stylesForPages.css'
+import CtgrsMob from '../Components/CategoriesSectionForMobile/CtgrsMob';
 
 function Home() {
   const {ShowDropDown, setShowDropDown,DontShowLogin, setLoginStatus,favLogin, setfavLogin}= useContext(cntxtCmngFrmFldOprtn)
@@ -23,6 +24,7 @@ function Home() {
       <Header setLoginStatus={setLoginStatus} setShowDropDown={setShowDropDown} />
       <Options/>
       <Banner/>
+      <CtgrsMob/>
       <Posts/>
       <Footer/>
     </div>

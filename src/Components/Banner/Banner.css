@@ -1,38 +1,58 @@
-/* .bannerParentDiv {
-  padding-top: 4em;
+
+.bannerChildDiv{
+  width: 100vw;
+  height: 20vh;
+  background-image: url('../../../public/Images/hero_bg_in_v3@1x.png');
+  background-position: center;
+  background-repeat: no-repeat;
 }
-.bannerParentDiv .bannerChildDiv {
-}
-.bannerParentDiv .bannerChildDiv .menuBar {
+
+.ba_button{
+  width: 49%;
+  border: none;
+  border-radius: 4px;
+  color: #002f34;
+  font-weight: 700;
+  background-color: white;
   display: flex;
-  padding: 10px 16px 10px 16px;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  cursor: pointer;
 }
 
-.bannerParentDiv .bannerChildDiv .menuBar span {
+.ba_button:hover{
+  background-color: rgb(48, 172, 191);
+  border: 4px solid white;
 }
-
-.bannerParentDiv .bannerChildDiv .menuBar .categoryMenu span {
-  margin-right: 16px;
-  font-weight: bolder;
+.ba_butContainer{
+  display: none;
+  width: 100%;
+  justify-content: space-between;
 }
-
-.bannerParentDiv .bannerChildDiv .menuBar .otherQuickOptions {
+.bannerChildDiv2{
+  display: none;
+  
 }
-.bannerParentDiv .bannerChildDiv .menuBar .otherQuickOptions span {
-  padding: 10px;
-} */
+@media only screen and (max-width: 800px) {
 
-.bannerChildDiv .banner {
-  position: relative;
-  width: 100vw;
-}
-.bannerChildDiv .banner img{
-  width: 100vw;
-}
-
-@media only screen and (max-width: 700px) {
-
-  .bannerChildDiv .banner {
-    position: relative;
+  .bannerChildDiv2 {
+    display: block;
   }
+  .bannerChildDiv2img{
+    width: 100%;
+  }
+  .bannerChildDiv{
+    display: none;
+  }
+  .ba_butContainer{
+    display: flex;
+  }
+  .bannerParentDiv{
+    width: 100vw;
+    margin-top: 22px;
+    padding: 15px;
+    background-color: rgb(48, 172, 191);
+  }
+ 
 }

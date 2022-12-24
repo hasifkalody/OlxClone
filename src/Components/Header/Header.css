@@ -7,6 +7,8 @@
 }
 .headerTop{
   position: fixed;
+  overflow: hidden;
+  box-sizing: border-box;
   top: 0;
   width: 100vw;
   padding-bottom: 4px;
@@ -15,6 +17,8 @@
 }
 .headerChildDiv {
   width: 100%;
+  position: relative;
+  height: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -164,13 +168,13 @@
   margin-left: 5px;
 }
 
-@media only screen and (max-width: 700px) {
+/* @media only screen and (max-width: 700px) {
   .placeSearch,
   .productSearch,
   .sellMenu {
     display: none;
   }
-}
+} */
 .hideDropDown{
   display: none;
 }
@@ -199,4 +203,78 @@
 
 .pd_beforeLogin:hover{
   border-bottom:none;
+}
+.he_Location{
+  align-items: center;
+  font-weight: 600;
+  gap: 5px;
+  font-size: 14px;
+  display: none;
+}
+.he_Location p{
+  margin: 0px;
+}
+
+
+.he_searchMob{
+  display: none;
+  position: absolute;
+  width: 100%;
+  top:100%;
+  height: 100%;
+  border: 2px solid #002f34;
+  border-radius: 4px;
+  box-sizing: border-box;
+  gap: 10px;
+  margin: 8px 0 0;
+  background: #fff;
+  padding: 12px 16px;
+  align-items: center;
+  cursor: pointer;
+}
+.he_searchMob :nth-child(2){
+  color: rgba(0,47,52,.64);
+  
+}
+.he_Humburger{
+  display: none;
+}
+.he_left{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.he_l1{
+  display: none;
+}
+
+@media  (max-width: 800px) {
+  .placeSearch,.language,.loginPage,.sellMenu,.productSearch {
+    display: none;
+  }
+  .he_Location{
+    display: flex;
+  }
+  .headerTop{
+    border: none;
+    padding-bottom: 0;
+    height: 13vh;
+  }
+  .headerParentDiv{
+    padding: 8px;
+    width: 100%;
+    background: #fff;
+  }
+  .he_searchMob{
+    display: flex;
+  }
+  .he_Humburger,.he_l1{
+    display: block;
+  }
+  .headerChildDiv{
+    align-items: center;
+  }
+  .he_l2{
+    display: none;
+  }
 }

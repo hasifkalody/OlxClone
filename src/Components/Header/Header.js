@@ -1,7 +1,10 @@
 import React,{useContext, useEffect, useState} from 'react';
-
+import Location from '../../assets/Location'
 import './Header.css';
 import OlxLogo from '../../assets/OlxLogo';
+import OlxLogoMob from '../../assets/OlxLogoMob';
+import Humburger from '../../assets/Humburger';
+import SearchMob from '../../assets/SearchMob';
 import Search from '../../assets/Search';
 import Arrow from '../../assets/Arrow';
 import SellButton from '../../assets/SellButton';
@@ -58,13 +61,17 @@ function Header({setLoginStatus,setShowDropDown}) {
    <div className='headerTop'>
      <div className="headerParentDiv">
       <div className="headerChildDiv">
+        <div className='he_left'>
+        <div className='he_Humburger'><Humburger/></div>
         <div className="brandName" onClick={()=>{nav('/')}}>
-          <OlxLogo ></OlxLogo>
+          <div className='he_l1'><OlxLogoMob/></div>
+          <div className='he_l2'><OlxLogo ></OlxLogo></div>
+        </div>
         </div>
         <div className="placeSearch">
-          <Search></Search>
+          <Search/>
           <input type="text" />
-          <Arrow></Arrow>
+          <div ><Arrow></Arrow></div>
         </div>
         <div className="productSearch">
           <div className="input">
@@ -74,7 +81,7 @@ function Header({setLoginStatus,setShowDropDown}) {
             />
           </div>
           <div className="searchAction">
-            <Search color="#ffffff"></Search>
+          <SearchMob/>
           </div>
         </div>
         <div className="language">
@@ -93,6 +100,15 @@ function Header({setLoginStatus,setShowDropDown}) {
             <SellButtonPlus></SellButtonPlus>
             <span>SELL</span>
           </div>
+        </div>
+        <div className='he_Location'>
+          <div><p>Delhi</p></div>
+          <div><Location/></div>
+        </div>
+        <div className='he_searchMob'>
+          <div><Search></Search></div>
+          <div><span>Find Cars, Mobile Phones and more...</span></div>
+
         </div>
       </div>
     </div>

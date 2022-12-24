@@ -1,9 +1,15 @@
+
 .homeParentDiv{
-    padding-top: 75px
+    padding-top: 75px;
 }
 .ctgrs_page{
     padding-top: 75px;
 }
 .mA_Container{
     padding-top: 74px;
+}
+@media (max-width:800px){
+    .homeParentDiv{
+        padding-top: 90px;
+    }
 }

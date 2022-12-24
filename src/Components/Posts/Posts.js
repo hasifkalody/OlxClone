@@ -54,59 +54,76 @@ function Posts() {
 
   return (
     <div className="postParentDiv">
-      <div className="moreView">
-        <div className="heading">
-          <span>Quick Menu</span>
-          <span>View more</span>
+      <div className="po_moreView">
+        <div className="po_heading">
+          <span>Based on your last search</span>
+          <span>view more</span>
         </div>
-        <div className="cards" >
+        <div className="po_cards" >
 
           {AllSellPostings.map((x) =>
-            <div className="card">
-              <div  className="ps_favorite" onClick={() => { addToFav(x) }}>
-              {LogedUser.name?x.uidsFvrtdUsrs.filter((y)=>y==LogedUser.uid).length>0?<HeartActive/>:<Heart/>:<Heart/>}
-              </div>
-              <div onClick={() => { navToViewPost(x) }}>
+            <div className="po_card">
+              <div className="po_cardInner"  onClick={() => { navToViewPost(x) }}>
+                <div  className="ps_favorite" onClick={() => { addToFav(x) }}>
+                {LogedUser.name?x.uidsFvrtdUsrs.filter((y)=>y==LogedUser.uid).length>0?<HeartActive/>:<Heart/>:<Heart/>}
+                </div>
                 <div className="image">
                   <img src={x.imageURL} alt="" />
                 </div>
-                <div className="content">
-                  <p className="rate">&#x20B9; {x.Price}</p>
-                  <span className="kilometer">{x.Category}</span>
-                  <p className="name"> {x.Name}</p>
+                <div className="po_content">
+                  <p>&#x20B9; {x.Price}</p>
+                  <span>2018 - 40000.0 km</span>
+                  {/* <span className="kilometer">{x.Category}</span> */}
+                  <p> {x.Name}</p>
+                  <div  className="po_btm">
+                   <p>Location</p>
+                   <p>{x.date}</p>
+                  </div>
+                  
+                  
                 </div>
-                <div className="date">
-                  <span>{x.date}</span>
-                </div>
+                
               </div>
             </div>
           )}
 
         </div>
       </div>
-      {/* <div className="recommendations">
-        <div className="heading">
-          <span>Fresh recommendations</span>
-        </div>
-        <div className="cards">
-          <div className="card">
-            <div className="favorite">
-              <Heart></Heart>
-            </div>
-            <div className="image">
-              <img src="../../../Images/R15V3.jpg" alt="" />
-            </div>
-            <div className="content">
-              <p className="rate">&#x20B9; 250000</p>
-              <span className="kilometer">Two Wheeler</span>
-              <p className="name"> YAMAHA R15V3</p>
-            </div>
-            <div className="date">
-              <span>10/5/2021</span>
-            </div>
+      <div className='po_rcmmndtnsCntnr'>
+          <div className='po_rcmFrst'><span>Fresh recommendations</span></div>
+          <div className='po_rcmmndtns'>
+            
+
+              {AllSellPostings.map((x) =>
+                <div className="po_rcmmndtnscardscard po_card">
+                  <div className="po_cardInner"  onClick={() => { navToViewPost(x) }}>
+                    <div  className="ps_favorite" onClick={() => { addToFav(x) }}>
+                    {LogedUser.name?x.uidsFvrtdUsrs.filter((y)=>y==LogedUser.uid).length>0?<HeartActive/>:<Heart/>:<Heart/>}
+                    </div>
+                    <div className="image">
+                      <img src={x.imageURL} alt="" />
+                    </div>
+                    <div className="po_content">
+                      <p>&#x20B9; {x.Price}</p>
+                      <span>2018 - 40000.0 km</span>
+                      {/* <span className="kilometer">{x.Category}</span> */}
+                      <p> {x.Name}</p>
+                      <div  className="po_btm">
+                      <p>Location</p>
+                      <p>{x.date}</p>
+                      </div>
+                      
+                      
+                    </div>
+                    
+                  </div>
+                </div>
+              )}
+
+           
           </div>
-        </div>
-      </div> */}
+      </div>
+     
     </div>
   );
 }
