@@ -98,7 +98,6 @@ function Footer() {
         </div>
       </div>
       <div className='fo_mob'>
-        
         <div  className='fo_mobEl'>
           <div className='fo_mobFrstEl'>
             <div><span>Categories</span></div>
@@ -194,17 +193,6 @@ function Footer() {
           </div>
           
         </div>
-
-        {/* <div>
-          <div onClick={toSell} className="fo_sellMenu">
-            <SellButton></SellButton>
-            <div className="fo_sellMenuContent">
-              <SellButtonPlus></SellButtonPlus>
-              <span>SELL</span>
-            </div>
-          </div>
-        </div> */}
-
       </div>
 
       <div className="fo_footer">

@@ -63,24 +63,26 @@ function Posts() {
 
           {AllSellPostings.map((x) =>
             <div className="po_card">
-              <div className="po_cardInner"  onClick={() => { navToViewPost(x) }}>
+              <div className="po_cardInner">
                 <div  className="ps_favorite" onClick={() => { addToFav(x) }}>
                 {LogedUser.name?x.uidsFvrtdUsrs.filter((y)=>y==LogedUser.uid).length>0?<HeartActive/>:<Heart/>:<Heart/>}
                 </div>
-                <div className="image">
-                  <img src={x.imageURL} alt="" />
-                </div>
-                <div className="po_content">
-                  <p>&#x20B9; {x.Price}</p>
-                  <span>2018 - 40000.0 km</span>
-                  {/* <span className="kilometer">{x.Category}</span> */}
-                  <p> {x.Name}</p>
-                  <div  className="po_btm">
-                   <p>Location</p>
-                   <p>{x.date}</p>
+                <div  onClick={() => { navToViewPost(x) }}>
+                  <div className="image">
+                    <img src={x.imageURL} alt="" />
                   </div>
-                  
-                  
+                  <div className="po_content">
+                    <p>&#x20B9; {x.Price}</p>
+                    <span>2018 - 40000.0 km</span>
+                    {/* <span className="kilometer">{x.Category}</span> */}
+                    <p> {x.Name}</p>
+                    <div  className="po_btm">
+                    <p>Location</p>
+                    <p>{x.date}</p>
+                    </div>
+                    
+                    
+                  </div>
                 </div>
                 
               </div>

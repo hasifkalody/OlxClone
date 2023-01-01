@@ -12,8 +12,21 @@ import { db } from '../Firebase/Auth';
 import Options from '../Components/Options/Options';
 import '../Pages/stylesForPages.css'
 import CtgrsMob from '../Components/CategoriesSectionForMobile/CtgrsMob';
+import SellButton from '../assets/SellButton';
+import SellButtonPlus from '../assets/SellButtonPlus';
+import { useNavigate } from 'react-router-dom';
+
 
 function Home() {
+  const nav=useNavigate()
+  const user = useContext(Contextuser)
+  const LogedUserName=user.name
+  const toSell=()=>{
+    LogedUserName?nav('/sell'):nav('/login')
+  }
+ 
+
+
   const {ShowDropDown, setShowDropDown,DontShowLogin, setLoginStatus,favLogin, setfavLogin}= useContext(cntxtCmngFrmFldOprtn)
 
 
@@ -26,6 +39,13 @@ function Home() {
       <Banner/>
       <CtgrsMob/>
       <Posts/>
+        <div className="fo_sellMenu" onClick={toSell} > 
+            <SellButton/>
+            <div className="fo_sellMenuContent">
+              <SellButtonPlus/>
+              <span>SELL</span>
+            </div>
+        </div> 
       <Footer/>
     </div>
   );

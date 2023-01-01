@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import './CtgrsMob.css'
 function CtgrsMob() {
+  const nav=useNavigate()
   return (
     <div className='mobctgrs_container'>
       <div className='mobctgrs_top'>
@@ -8,7 +10,7 @@ function CtgrsMob() {
         <div><span>See all</span></div>
       </div>
       <div className='mobctgrs_slider'>
-        <div className='mobctgrs_card'>
+        <div className='mobctgrs_card' onClick={()=>{nav('/Cars')}}>
             <div className='mobctgrs_cardmg'><img src="https://statics.olx.in/olxin/category_icons/v4/category_5_2x.png" alt="image" /></div>
             <div ><p>OLX Autos (Cars)</p></div>
         </div>
