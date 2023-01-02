@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import ArrowDwn from '../../assets/ArrowDwn';
 // import { useAuthState } from "react-firebase-hooks/auth";
 import {Contextuser} from '../../App'
+import Cross from '../../assets/Cross/Cross';
 
 
 const AfterLogin=()=>{
@@ -32,10 +33,13 @@ const BeforeLogin=()=>{
 }
 
 function Header({setLoginStatus,setShowDropDown}) {
-  
+const [HmbrgrClickd, setHmbrgrClickd] = useState(false)
   const LogedUser=useContext(Contextuser)
   const LogedUserName=LogedUser.name
   const nav = useNavigate()
+  const handleHmbrgrClck=()=>{
+    setHmbrgrClickd((x)=>!x)
+  }
   const HandlePopUP=()=>{
     setLoginStatus((x)=>!x);
   } 
@@ -62,7 +66,11 @@ function Header({setLoginStatus,setShowDropDown}) {
      <div className="headerParentDiv">
       <div className="headerChildDiv">
         <div className='he_left'>
-        <div className='he_Humburger'><Humburger/></div>
+        <div className='he_l1' onClick={handleHmbrgrClck}>
+        {HmbrgrClickd==false&&<div  className='he_Humburger'><Humburger/></div>}
+        {HmbrgrClickd==true&&<Cross/>}
+        </div>
+        
         <div className="brandName" onClick={()=>{nav('/')}}>
           <div className='he_l1'><OlxLogoMob/></div>
           <div className='he_l2'><OlxLogo ></OlxLogo></div>

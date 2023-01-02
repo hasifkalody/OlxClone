@@ -77,7 +77,7 @@ function Posts() {
                     {/* <span className="kilometer">{x.Category}</span> */}
                     <p> {x.Name}</p>
                     <div  className="po_btm">
-                    <p>Location</p>
+                    <p className='po_Location'>Location</p>
                     <p>{x.date}</p>
                     </div>
                     
@@ -111,7 +111,7 @@ function Posts() {
                       {/* <span className="kilometer">{x.Category}</span> */}
                       <p> {x.Name}</p>
                       <div  className="po_btm">
-                      <p>Location</p>
+                      <p className='po_Location'>Location</p>
                       <p>{x.date}</p>
                       </div>
                       

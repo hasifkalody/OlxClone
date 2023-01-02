@@ -185,6 +185,9 @@
     white-space: nowrap;
     overflow: hidden;
   }
+  .po_Location{
+    display: none;
+  }
   .po_rcmmndtns{
     display: flex;
     flex-wrap: wrap;

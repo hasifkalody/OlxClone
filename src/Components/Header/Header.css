@@ -5,6 +5,9 @@
 .brandName{
   cursor: pointer;
 }
+.he_l1{
+  width: 25px;
+}
 .headerTop{
   position: fixed;
   overflow: hidden;

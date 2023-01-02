@@ -15,6 +15,7 @@ import CtgrsMob from '../Components/CategoriesSectionForMobile/CtgrsMob';
 import SellButton from '../assets/SellButton';
 import SellButtonPlus from '../assets/SellButtonPlus';
 import { useNavigate } from 'react-router-dom';
+import HumburgerMenu from '../Components/HumburgerMenu/HumburgerMenu';
 
 
 function Home() {
@@ -35,6 +36,7 @@ function Home() {
       {ShowDropDown && <ProfileDropDown setShowDropDown={setShowDropDown} />}
       {DontShowLogin ? "" : <LoginOptions setLoginStatus={setLoginStatus} favLogin={favLogin} setfavLogin={setfavLogin} />}
       <Header setLoginStatus={setLoginStatus} setShowDropDown={setShowDropDown} />
+      <HumburgerMenu/>
       <Options/>
       <Banner/>
       <CtgrsMob/>
