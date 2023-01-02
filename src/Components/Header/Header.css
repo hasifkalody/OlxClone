@@ -261,7 +261,7 @@
   .headerTop{
     border: none;
     padding-bottom: 0;
-    height: 13vh;
+    height: 15vh;
   }
   .headerParentDiv{
     padding: 8px;
@@ -276,6 +276,7 @@
   }
   .headerChildDiv{
     align-items: center;
+    
   }
   .he_l2{
     display: none;

@@ -39,6 +39,16 @@ const [HmbrgrClickd, setHmbrgrClickd] = useState(false)
   const nav = useNavigate()
   const handleHmbrgrClck=()=>{
     setHmbrgrClickd((x)=>!x)
+    document.getElementById('hbrgrMenu').classList.remove('HmrgrBottomtoTopAnim')
+    if(HmbrgrClickd==true){
+        document.getElementById('hbrgrMenu').classList.add('HmrgrBottomtoTopAnim')
+        setTimeout(() => {
+            document.getElementById('hbrgrMenu').classList.toggle('HmrgrShow')
+          }, 180);
+        }
+        else{
+          document.getElementById('hbrgrMenu').classList.toggle('HmrgrShow')  
+          }
   }
   const HandlePopUP=()=>{
     setLoginStatus((x)=>!x);

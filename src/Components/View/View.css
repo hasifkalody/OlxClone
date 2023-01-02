@@ -50,3 +50,9 @@
   font-weight: 400;
   padding: 0;
 }
+@media (max-width:800px){
+  .viewParentDiv .imageShowDiv img {
+    width: 100%;
+    height: auto;
+  }
+}

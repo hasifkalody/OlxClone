@@ -6,9 +6,11 @@ import AngleBracketLeft from '../../assets/AngleBracketLeft'
 import AngleBracketRight from '../../assets/AngleBracketRight'
 import imageForCarousel from '../../Components/LoginOptions/imageForCarousel.png'
 import {useNavigate} from 'react-router-dom'
-import Cross from '../../Components/Cross/Cross'
+import Cross from '../../assets/Cross/Cross'
 function LoginOptions({setLoginStatus,favLogin,setfavLogin}) {
-  
+  const handleerrmsg=()=>{
+    document.getElementById('errmsgShw').classList.toggle('errmsgShow')
+  }
   const nav=useNavigate()
   const [slider, setslider] = useState("")
   const [indicator, setindicator] = useState("")
@@ -90,9 +92,9 @@ useEffect(() => {
           <a href="#second" className='lo_button'></a>
           <a href="#third" className='lo_button'></a> */}
         </div>
-       
-        <button className='lo_loginOpt'><MobileIcon/><p>Continue with Phone</p></button>
-        <button className='lo_loginOpt'><GoogleIcon/><p>Continue with Google</p></button>
+        <p id='errmsgShw' className='errmsg'>Plese login with Email</p>
+        <button className='lo_loginOpt' onClick={handleerrmsg}><MobileIcon/><p>Continue with Phone</p></button>
+        <button className='lo_loginOpt' onClick={handleerrmsg}><GoogleIcon/><p>Continue with Google</p></button>
         <div className='lo_Bottom1'>
         <p>OR</p>
         <span onClick={()=>{nav('/login')}}><p>Login with Email</p></span>

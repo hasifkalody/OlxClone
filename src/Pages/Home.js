@@ -22,10 +22,14 @@ function Home() {
   const nav=useNavigate()
   const user = useContext(Contextuser)
   const LogedUserName=user.name
-  const toSell=()=>{
-    LogedUserName?nav('/sell'):nav('/login')
-  }
- 
+  // const toSell=()=>{
+  //   LogedUserName?nav('/sell'):nav('/login')
+  // }
+  const HandleSell=()=>{
+    if(LogedUserName){
+        nav('/sell')
+    }else setLoginStatus(x=>!x)
+ }
 
 
   const {ShowDropDown, setShowDropDown,DontShowLogin, setLoginStatus,favLogin, setfavLogin}= useContext(cntxtCmngFrmFldOprtn)
@@ -36,12 +40,12 @@ function Home() {
       {ShowDropDown && <ProfileDropDown setShowDropDown={setShowDropDown} />}
       {DontShowLogin ? "" : <LoginOptions setLoginStatus={setLoginStatus} favLogin={favLogin} setfavLogin={setfavLogin} />}
       <Header setLoginStatus={setLoginStatus} setShowDropDown={setShowDropDown} />
-      <HumburgerMenu/>
+      <HumburgerMenu LogedUserName={LogedUserName} setLoginStatus={setLoginStatus}/>
       <Options/>
       <Banner/>
       <CtgrsMob/>
       <Posts/>
-        <div className="fo_sellMenu" onClick={toSell} > 
+        <div className="fo_sellMenu" onClick={HandleSell} > 
             <SellButton/>
             <div className="fo_sellMenuContent">
               <SellButtonPlus/>

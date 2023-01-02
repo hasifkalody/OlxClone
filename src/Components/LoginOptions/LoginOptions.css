@@ -11,6 +11,13 @@
     align-items: center;
     user-select: none;
 }
+.errmsg{
+    color: red;
+    visibility: hidden;
+}
+.errmsgShow{
+    visibility: visible;
+}
 .lo_card{
     width: 360px;
     height: 550px;
@@ -97,9 +104,10 @@
     width:100px; 
 }
 .lo_cross{
-    position: relative;
-    left: 150px;
     cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
 .lo_slider div{
     display: flex;
@@ -174,4 +182,11 @@
 }
 .lo_Bottom3 span{
     color:#3a77ff;
+}
+
+@media (max-width:800px){
+    .lo_card{
+       width: 100vw; 
+       height: 100vh;
+    }
 }

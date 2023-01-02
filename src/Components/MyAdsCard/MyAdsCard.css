@@ -180,3 +180,78 @@
 
    
 }
+
+@media (max-width:800px){
+    #AdCrd_5thdrpdwnBtn1{
+        border: none;
+        width:100px;
+        height: 20px;
+        margin: 5px 15px;
+    
+    }
+    #AdCrd_5thdrpdwnBtn2{
+        border: none;
+        width:100px;
+        height: 20px;
+        margin: 5px 15px;
+    }
+    .AdCrd_left{
+        width: 60px;
+        height: 100px;
+        padding-left: 5px;
+    }
+    .AdCrd_image img{
+        width: 25px;
+    }
+    .AdCrd_image{
+        height: 25px;
+        width: 25px;
+    }
+    #AdCrd_rghtScndBtn{
+    
+        width: 60px;
+        height: 15px;
+        background-color: aqua;
+        border-radius: 5px;
+        margin: 0;
+        
+    }
+    #AdCrd_button{
+        width: 60px;
+        height: 20px; 
+        border-radius: 2px;     
+    }
+    .AdCrd_3rd{
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 10px;
+    }
+    .AdCrd_4th{
+        margin-left: 6px;   
+        font-size: 12px;   
+    }
+    .AdCrd_right{
+        width: 90%;
+        padding-left: 10px;
+        gap: 2px;
+    }
+    .AdCrd_5thInner{
+        transform: translateX(2.5px);
+        gap: 1px;
+        width: 11px;
+        height: 15px;
+    }
+    .AdCrd_5thInner span{
+        width: 2.5px;
+        height: 2.5px;
+        border-radius: 50%;
+    }
+    .AdCrd_5th{
+        width: 14px;
+        height: 22.5px;
+        top: 0;
+        right: 4px;
+        border-radius: 2.5px;
+    }
+
+ }

@@ -99,7 +99,7 @@ function Posts() {
               {AllSellPostings.map((x) =>
                 <div className="po_rcmmndtnscardscard po_card">
                   <div className="po_cardInner"  onClick={() => { navToViewPost(x) }}>
-                    <div  className="ps_favorite" onClick={() => { addToFav(x) }}>
+                    <div  className="ps_favorite" onClick={(e) => {e.stopPropagation(); addToFav(x) }}>
                     {LogedUser.name?x.uidsFvrtdUsrs.filter((y)=>y==LogedUser.uid).length>0?<HeartActive/>:<Heart/>:<Heart/>}
                     </div>
                     <div className="image">

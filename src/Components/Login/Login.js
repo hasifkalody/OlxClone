@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import Logo from '../../olx-logo.png';
 import './Login.css';
 import {logInWithEmailAndPassword,signInWithGoogle} from '../../Firebase/Auth'
 import {useNavigate} from 'react-router-dom'
+import { cntxtCmngFrmFldOprtn } from '../../Helpers/Helpers';
 
 function Login() {
+  const {setLoginStatus} = useContext(cntxtCmngFrmFldOprtn)
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [LoginErr, LoginErrstatus] = useState();
@@ -12,7 +14,9 @@ function Login() {
   const login=()=>{
     const callback=(loginResponse)=>{
       if(loginResponse.loginError)LoginErrstatus(loginResponse.loginError)
-      else nav(loginResponse)
+      else{ 
+        setLoginStatus((x)=>!x)
+        nav(loginResponse)}
     }
     
     logInWithEmailAndPassword(email,password,callback);
