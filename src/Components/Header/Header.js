@@ -1,6 +1,7 @@
 import React,{useContext, useEffect, useState} from 'react';
 import Location from '../../assets/Location'
 import './Header.css';
+import '../HumburgerMenu/HumburgerMenu.css'
 import OlxLogo from '../../assets/OlxLogo';
 import OlxLogoMob from '../../assets/OlxLogoMob';
 import Humburger from '../../assets/Humburger';
@@ -14,6 +15,8 @@ import ArrowDwn from '../../assets/ArrowDwn';
 // import { useAuthState } from "react-firebase-hooks/auth";
 import {Contextuser} from '../../App'
 import Cross from '../../assets/Cross/Cross';
+import {handleHmbrgrClck} from '../../Helpers/Helpers'
+import {cntxtCmngFrmFldOprtn} from '../../Helpers/Helpers'
 
 
 const AfterLogin=()=>{
@@ -32,24 +35,12 @@ const BeforeLogin=()=>{
   )
 }
 
-function Header({setLoginStatus,setShowDropDown}) {
-const [HmbrgrClickd, setHmbrgrClickd] = useState(false)
+function Header({setShowDropDown}) {
+  const {setLoginStatus,HmbrgrClickd, setHmbrgrClickd}= useContext(cntxtCmngFrmFldOprtn)
   const LogedUser=useContext(Contextuser)
   const LogedUserName=LogedUser.name
   const nav = useNavigate()
-  const handleHmbrgrClck=()=>{
-    setHmbrgrClickd((x)=>!x)
-    document.getElementById('hbrgrMenu').classList.remove('HmrgrBottomtoTopAnim')
-    if(HmbrgrClickd==true){
-        document.getElementById('hbrgrMenu').classList.add('HmrgrBottomtoTopAnim')
-        setTimeout(() => {
-            document.getElementById('hbrgrMenu').classList.toggle('HmrgrShow')
-          }, 180);
-        }
-        else{
-          document.getElementById('hbrgrMenu').classList.toggle('HmrgrShow')  
-          }
-  }
+  
   const HandlePopUP=()=>{
     setLoginStatus((x)=>!x);
   } 
@@ -76,7 +67,7 @@ const [HmbrgrClickd, setHmbrgrClickd] = useState(false)
      <div className="headerParentDiv">
       <div className="headerChildDiv">
         <div className='he_left'>
-        <div className='he_l1' onClick={handleHmbrgrClck}>
+        <div className='he_l1' onClick={()=>{handleHmbrgrClck(HmbrgrClickd,setHmbrgrClickd)}}>
         {HmbrgrClickd==false&&<div  className='he_Humburger'><Humburger/></div>}
         {HmbrgrClickd==true&&<Cross/>}
         </div>

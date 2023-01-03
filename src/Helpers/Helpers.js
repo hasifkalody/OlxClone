@@ -85,10 +85,12 @@ const NoOfVisits=({children})=>{
     const [DontShowLogin, setLoginStatus] = useState(true)
     const [update, setUpdate] = useState(0)
     const [ShowDropDown, setShowDropDown] = useState(false)
+    const [HmbrgrClickd, setHmbrgrClickd] = useState(false)
 
 
   return(
-    <cntxtCmngFrmFldOprtn.Provider value={{CmngFrmFldOprtn,setCmngFrmFldOprtn,favLogin, setfavLogin,DontShowLogin, setLoginStatus,update, setUpdate,ShowDropDown, setShowDropDown}}>
+    <cntxtCmngFrmFldOprtn.Provider value={{CmngFrmFldOprtn,setCmngFrmFldOprtn,favLogin, setfavLogin,DontShowLogin, setLoginStatus,update, setUpdate,ShowDropDown, setShowDropDown,HmbrgrClickd, setHmbrgrClickd
+    }}>
       {children}
     </cntxtCmngFrmFldOprtn.Provider>
   )
@@ -109,4 +111,17 @@ const deleteDocument=async(id,f)=>{
  f()
 //  setdeleted((p)=>p+1)
 }
-export {FetchDate,PostedItemContext,contextForPostedItem,NoOfVisitsContext,NoOfVisits,addToFav, FrmFldOprtn,cntxtCmngFrmFldOprtn,FetchCateories,deleteDocument}
+const handleHmbrgrClck=(HmbrgrClickd,setHmbrgrClickd)=>{
+  setHmbrgrClickd((x)=>!x)
+  document.getElementById('hbrgrMenu').classList.remove('HmrgrBottomtoTopAnim')
+  if(HmbrgrClickd==true){
+      document.getElementById('hbrgrMenu').classList.add('HmrgrBottomtoTopAnim')
+      setTimeout(() => {
+          document.getElementById('hbrgrMenu').classList.toggle('HmrgrShow')
+        }, 180);
+      }
+      else{
+        document.getElementById('hbrgrMenu').classList.toggle('HmrgrShow')  
+        }
+}
+export {FetchDate,PostedItemContext,contextForPostedItem,NoOfVisitsContext,NoOfVisits,addToFav, FrmFldOprtn,cntxtCmngFrmFldOprtn,FetchCateories,deleteDocument,handleHmbrgrClck}

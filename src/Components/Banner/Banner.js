@@ -2,7 +2,9 @@ import React from 'react';
 
 import './Banner.css';
 import Arrow from '../../assets/Arrow'
+import { useNavigate } from 'react-router-dom';
 function Banner() {
+  const nav=useNavigate()
   return (
     <div className="bannerParentDiv">
       <div className="bannerChildDiv">
@@ -17,8 +19,8 @@ function Banner() {
         </picture> */}
       </div>
       <div className='ba_butContainer'>
-          <span className='ba_button'>Buy Car</span>
-          <span className='ba_button'>Sell Car</span>
+          <span className='ba_button' onClick={()=>{nav('/Cars')}}>Buy Car</span>
+          <span className='ba_button' onClick={()=>{nav('/sell')}}>Sell Car</span>
        </div>
       
     </div>

@@ -7,17 +7,19 @@ import Options from '../Components/Options/Options'
 import MyAds from '../Components/MyAds/MyAds'
 import '../Components/MyAds/MyAds.css'
 import {cntxtCmngFrmFldOprtn} from '../Helpers/Helpers'
+import HumburgerMenu from '../Components/HumburgerMenu/HumburgerMenu'
+import { Contextuser } from '../App';
 
 function Ads() {
-  const {ShowDropDown, setShowDropDown,DontShowLogin, setLoginStatus,favLogin, setfavLogin}= useContext(cntxtCmngFrmFldOprtn)
-
+  const {setLoginStatus}= useContext(cntxtCmngFrmFldOprtn)
+  const user = useContext(Contextuser)
+  const LogedUserName=user.name
 
   return (
     <div className='mA_Container'>
-      {ShowDropDown && <ProfileDropDown setShowDropDown={setShowDropDown} />}
-      {DontShowLogin ? "" : <LoginOptions setLoginStatus={setLoginStatus} favLogin={favLogin} setfavLogin={setfavLogin} />}
-      <Header setShowDropDown={setShowDropDown} setLoginStatus={setLoginStatus}/> 
+      <Header setLoginStatus={setLoginStatus}/> 
       <Options/>
+      <HumburgerMenu LogedUserName={LogedUserName}/>
       <MyAds/>
       <Footer/>
       

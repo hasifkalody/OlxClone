@@ -8,6 +8,7 @@
     /* overflow: hidden; */
     margin: 20px 0;
     cursor: pointer;
+    height: 140px;
 }
 .AdCrd_5thdrpdwn{
     background-color:white;
@@ -189,6 +190,10 @@
         margin: 5px 15px;
     
     }
+    .AdCrd_Container{
+        
+    }
+    
     #AdCrd_5thdrpdwnBtn2{
         border: none;
         width:100px;
@@ -197,7 +202,7 @@
     }
     .AdCrd_left{
         width: 60px;
-        height: 100px;
+        height: 100%;
         padding-left: 5px;
     }
     .AdCrd_image img{
@@ -217,9 +222,7 @@
         
     }
     #AdCrd_button{
-        width: 60px;
-        height: 20px; 
-        border-radius: 2px;     
+        display: none;   
     }
     .AdCrd_3rd{
         margin-left: 10px;
@@ -227,8 +230,7 @@
         font-size: 10px;
     }
     .AdCrd_4th{
-        margin-left: 6px;   
-        font-size: 12px;   
+        display: none;   
     }
     .AdCrd_right{
         width: 90%;

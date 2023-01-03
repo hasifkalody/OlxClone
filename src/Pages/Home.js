@@ -39,7 +39,7 @@ function Home() {
     <div className="homeParentDiv">
       {ShowDropDown && <ProfileDropDown setShowDropDown={setShowDropDown} />}
       {DontShowLogin ? "" : <LoginOptions setLoginStatus={setLoginStatus} favLogin={favLogin} setfavLogin={setfavLogin} />}
-      <Header setLoginStatus={setLoginStatus} setShowDropDown={setShowDropDown} />
+      <Header setShowDropDown={setShowDropDown} />
       <HumburgerMenu LogedUserName={LogedUserName} setLoginStatus={setLoginStatus}/>
       <Options/>
       <Banner/>
